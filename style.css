@@ -580,7 +580,37 @@ body {
 a {
   color: var(--accent);
 }
+/* ========= Carrier Setup ========= */
 
+.carrier-section {
+  border-top: 1px solid rgba(24, 35, 58, 0.7);
+}
+
+.carrier-wrap {
+  max-width: 700px;
+}
+
+.carrier-card {
+  margin-top: 18px;
+  padding: 20px 22px;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at top, #151f37, #050c1a);
+  border: 1px solid rgba(47, 71, 122, 0.9);
+  box-shadow: var(--shadow-soft);
+}
+
+.carrier-card p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.carrier-btn {
+  display: inline-block;
+  margin-top: 4px;
+  width: fit-content;
+  padding: 10px 26px;
+}
 /* ========= Responsive ========= */
 
 @media (max-width: 900px) {
