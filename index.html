@@ -2,347 +2,332 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>DLV Logistics – Your business in motion</title>
+    <title>DLV Logistics | Your business in motion</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="DLV Logistics keeps your business in motion with cross-border, heavy haul, time-critical, and regulated freight solutions."
+      content="DLV Logistics moves cross border, heavy, time critical and regulated freight across Canada and the United States with a team that lives in the details."
     />
-
-    <!-- Fonts (example; we can change later) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Styles -->
     <link rel="stylesheet" href="style.css" />
   </head>
-<script src="script.js"></script>
   <body>
-    <!-- ====== Header / Nav ====== -->
-    <header class="site-header">
-      <div class="wrap nav-wrap">
-        <a href="#hero" class="logo">
-          <!-- Use your DLV logo file path here -->
-          <img src="assets/DLV-logo.png" alt="DLV Logistics" />
-        </a>
+    <!-- ========= Shell ========= -->
+    <div class="page">
+      <!-- ========= Header / Nav ========= -->
+      <header class="site-header">
+        <div class="wrap nav-wrap">
+          <a href="#hero" class="brand">
+            <img
+              src="assets/DLV_logo.jpg"
+              alt="DLV Logistics logo"
+              class="logo-img"
+            />
+            <span class="brand-text">
+              <span class="brand-small">DLV Logistics</span>
+            </span>
+          </a>
 
-        <nav class="nav">
-          <ul>
-            <li><a href="#who-we-serve">Who we serve</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#why-dlv">Why DLV</a></li>
-            <li><a href="#quote">Get a quote</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
+          <nav class="nav">
+            <button class="nav-toggle" aria-label="Toggle navigation">
+              <span></span><span></span>
+            </button>
+            <ul class="nav-list">
+              <li><a href="#who">Who we serve</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#why">Why DLV</a></li>
+              <li><a href="#quote">Get a quote</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
 
-        <a href="#quote" class="btn btn-primary nav-cta">Request a quote</a>
-      </div>
-    </header>
-
-    <main>
-      <!-- ====== Hero ====== -->
-      <section id="hero" class="hero section">
-        <div class="wrap hero-inner">
-          <div class="hero-copy">
-            <p class="eyebrow">DLV Logistics</p>
-            <h1>Your business in motion</h1>
-            <p class="hero-sub">
-              We move the freight that keeps your business alive — from daily
-              lanes to complex projects. DLV Logistics handles cross-border,
-              heavy haul, time-critical, and regulated shipments with the same
-              focus: safe delivery, clear communication, and no surprises.
-            </p>
-
-            <div class="hero-actions">
-              <a href="#quote" class="btn btn-primary">Request a quote</a>
-            </div>
-
-            <div class="hero-badges">
-              <span class="badge">Canada &amp; USA cross-border</span>
-              <span class="badge">Heavy &amp; over-dimensional</span>
-              <span class="badge">High-value &amp; regulated freight</span>
-            </div>
-          </div>
-
-          <div class="hero-visual">
-            <!-- Reserved for future motion graphic / map / stats -->
-            <div class="hero-card hero-card--stats">
-              <p class="hero-card-label">On-time performance</p>
-              <p class="hero-card-value">97.8%</p>
-              <p class="hero-card-note">Tracked across active lanes</p>
-            </div>
-            <div class="hero-card hero-card--map">
-              <p class="hero-card-label">Primary corridors</p>
-              <ul>
-                <li>QC / ON ⇄ Midwest &amp; Northeast</li>
-                <li>BC / AB ⇄ Pacific Northwest</li>
-                <li>Special projects across North America</li>
-              </ul>
-            </div>
+          <!-- Neon DLV pill on the right -->
+          <div class="nav-pill">
+            <span class="nav-pill-text">DLV</span>
           </div>
         </div>
-      </section>
+      </header>
 
-      <!-- ====== Who We Serve (3 tiles) ====== -->
-      <section id="who-we-serve" class="section">
-        <div class="wrap">
-          <h2>Who we serve</h2>
-          <p class="section-intro">
-            One partner, multiple ways to move. Whether you manage a plant,
-            build a book of business, or coordinate special projects, DLV plugs
-            into your world instead of forcing you into ours.
-          </p>
+      <!-- ========= Hero ========= -->
+      <main>
+        <section id="hero" class="hero">
+          <!-- electric lines decoration -->
+          <div class="hero-lines hero-lines-top"></div>
+          <div class="hero-lines hero-lines-bottom"></div>
 
-          <div class="cards cards--serve">
-            <!-- Shippers -->
-            <article class="card">
-              <div class="card-media"></div>
-              <div class="card-body">
+          <div class="wrap hero-grid">
+            <div class="hero-copy">
+              <!-- graffiti style neon tag -->
+              <span class="dlv-tag" aria-hidden="true">DLV</span>
+
+              <h1>Your business in motion</h1>
+
+              <p class="hero-lead">
+                We move the freight that keeps your business alive from daily
+                lanes to complex projects. DLV Logistics handles cross border,
+                heavy haul, time critical and regulated shipments with one
+                focus. Safe delivery, clear communication and no surprises.
+              </p>
+
+              <div class="hero-actions">
+                <button class="btn btn-primary" data-scroll-target="#quote">
+                  Request a quote
+                </button>
+              </div>
+
+              <div class="hero-tags">
+                <span class="tag">Canada and USA cross border</span>
+                <span class="tag">Heavy and over dimensional</span>
+                <span class="tag">High value and regulated freight</span>
+              </div>
+            </div>
+
+            <aside class="hero-stats">
+              <div class="stat-card">
+                <p class="stat-label">On time performance</p>
+                <p class="stat-value">97.8%</p>
+                <p class="stat-note">Tracked across active lanes</p>
+              </div>
+
+              <div class="stat-card">
+                <p class="stat-label">Primary corridors</p>
+                <ul class="stat-list">
+                  <li>BC ⇄ AB ⇄ SK ⇄ MB ⇄ ON ⇄ QC ⇄ NL ⇄ NS ⇄ NB</li>
+                  <li>Cross border Canada and USA</li>
+                  <li>Forty eight states coverage in the United States</li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- ========= Who we serve ========= -->
+        <section id="who" class="section">
+          <div class="wrap">
+            <h2>Who we serve</h2>
+            <p class="section-lead">
+              One partner, many ways to move. Whether you manage a plant,
+              oversee a network of projects or coordinate freight for your own
+              customers, DLV plugs into the way you work instead of forcing you
+              into a template.
+            </p>
+
+            <div class="tiles">
+              <article class="tile">
                 <h3>Shippers</h3>
                 <p>
-                  Capacity that matches your priorities. From steady lanes to
-                  last-minute recoveries, we line up the right equipment and
-                  experienced carriers, then stay on top of the load from pickup
-                  to POD.
+                  Manufacturing, construction, energy, retail and everything in
+                  between. We handle full truckload, project freight and
+                  multi stop moves across Canada and the United States.
                 </p>
-                <ul class="bullets">
-                  <li>FTL, LTL &amp; partials</li>
-                  <li>High-value &amp; sensitive freight</li>
-                  <li>Plant moves &amp; regular replenishment</li>
+                <ul>
+                  <li>Plant to site and yard to site coverage</li>
+                  <li>Project and seasonal surge support</li>
+                  <li>Single point of contact and live updates</li>
                 </ul>
-              </div>
-            </article>
+              </article>
 
-            <!-- Agents / Brokers -->
-            <article class="card">
-              <div class="card-media"></div>
-              <div class="card-body">
-                <h3>Agents &amp; Brokers</h3>
+              <article class="tile">
+                <h3>Agents and brokers</h3>
                 <p>
-                  A back-end engine for your freight. Pricing support, carrier
-                  coverage, tracking, and paperwork — we handle the execution so
-                  you can focus on selling and growing your book under your own
-                  name.
+                  Need capacity that behaves like your own team. DLV runs as a
+                  silent partner for complex freight that needs extra planning
+                  and follow through.
                 </p>
-                <ul class="bullets">
-                  <li>Spot &amp; contract rate support</li>
-                  <li>Operations &amp; dispatch coverage</li>
-                  <li>White-label communication with your clients</li>
+                <ul>
+                  <li>Heavy and over dimensional support</li>
+                  <li>Regulated and high value projects</li>
+                  <li>Transparent communication with your brand first</li>
                 </ul>
-              </div>
-            </article>
-
-            <!-- Projects & Specialized Freight -->
-            <article class="card">
-              <div class="card-media"></div>
-              <div class="card-body">
-                <h3>Projects &amp; specialized freight</h3>
-                <p>
-                  Complex freight, simplified. Cross-border, heavy haul,
-                  multi-stop, or regulated cargo — we design the route,
-                  coordinate the right partners, and manage the risk so your
-                  team doesn’t have to.
-                </p>
-                <ul class="bullets">
-                  <li>Heavy &amp; over-dimensional projects</li>
-                  <li>Time-critical &amp; shutdown-sensitive loads</li>
-                  <li>Special handling and regulatory guidance</li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====== Services / Capabilities ====== -->
-      <section id="services" class="section section--alt">
-        <div class="wrap">
-          <h2>What we move</h2>
-          <p class="section-intro">
-            Asset-backed carrier partners, vetted lanes, and a team that lives
-            in the details.
-          </p>
-
-          <div class="grid grid-2">
-            <div>
-              <h3>Core modes</h3>
-              <ul class="bullets">
-                <li>Full Truckload (dry van, reefer, flatbed)</li>
-                <li>LTL &amp; consolidation</li>
-                <li>Open deck &amp; specialized trailers</li>
-                <li>Expedited &amp; team service</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Advanced capabilities</h3>
-              <ul class="bullets">
-                <li>Canada–USA cross-border expertise</li>
-                <li>Heavy haul &amp; over-dimensional planning</li>
-                <li>High-value &amp; sensitive commodities</li>
-                <li>Regulated &amp; special-handling freight</li>
-              </ul>
+              </article>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- ====== Why DLV ====== -->
-      <section id="why-dlv" class="section">
-        <div class="wrap">
-          <h2>Why DLV</h2>
-          <div class="grid grid-3">
-            <div class="pill">
-              <h3>Clarity over noise</h3>
-              <p>
-                You get proactive updates, clean paperwork, and a single point
-                of contact who knows your freight — not a different voice on
-                every shipment.
-              </p>
-            </div>
-            <div class="pill">
-              <h3>Built for difficult freight</h3>
-              <p>
-                We specialize in the jobs that can’t go wrong: plant shutdowns,
-                project freight, cross-border moves, and sensitive cargo.
-              </p>
-            </div>
-            <div class="pill">
-              <h3>Partnership mindset</h3>
-              <p>
-                We’d rather keep your business for years than chase a one-off
-                load. Expect honest answers, realistic ETAs, and transparent
-                pricing.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====== Quote / Lead Form ====== -->
-      <section id="quote" class="section section--alt">
-        <div class="wrap">
-          <h2>Request a quote</h2>
-          <p class="section-intro">
-            Share the basics of your shipment and we’ll reply with options, not
-            just a number.
-          </p>
-
-          <form class="quote-form">
-            <div class="form-grid">
-              <div class="field">
-                <label for="company">Company</label>
-                <input id="company" name="company" type="text" required />
-              </div>
-              <div class="field">
-                <label for="name">Contact name</label>
-                <input id="name" name="name" type="text" required />
-              </div>
-              <div class="field">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" required />
-              </div>
-              <div class="field">
-                <label for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" />
-              </div>
-              <div class="field">
-                <label for="lane">Origin &amp; destination</label>
-                <input
-                  id="lane"
-                  name="lane"
-                  type="text"
-                  placeholder="e.g. Montreal, QC → Chicago, IL"
-                  required
-                />
-              </div>
-              <div class="field">
-                <label for="details">Freight details</label>
-                <textarea
-                  id="details"
-                  name="details"
-                  rows="4"
-                  placeholder="Commodity, weight, pieces, dates, special requirements…"
-                ></textarea>
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary">
-              Submit request
-            </button>
-            <p class="form-note">
-              Prefer email? Reach us at
-              <a href="mailto:sales@dlvlogistics.com">sales@dlvlogistics.com</a>.
+        <!-- ========= Services ========= -->
+        <section id="services" class="section section-alt">
+          <div class="wrap">
+            <h2>Services</h2>
+            <p class="section-lead">
+              From standard lanes to special projects, we put planning and
+              monitoring around every load so your team can stay focused on
+              running the business.
             </p>
-          </form>
-        </div>
-      </section>
 
-      <!-- ====== Carrier Setup (not in hero, near bottom) ====== -->
-      <section id="carrier-setup" class="section">
-        <div class="wrap">
-          <h2>Carrier &amp; partner setup</h2>
-          <p class="section-intro">
-            If you’ve received a link from our team to onboard as a carrier or
-            partner, use the button below to complete your profile and upload
-            documents.
-          </p>
+            <div class="grid grid-3">
+              <article class="card">
+                <h3>Cross border truckload</h3>
+                <p>
+                  Single and multi stop truckload and partial loads across
+                  Canada and the United States with customs coordination built
+                  in.
+                </p>
+                <ul>
+                  <li>Dry van and temperature controlled</li>
+                  <li>Canada and United States coast to coast</li>
+                  <li>Time definite and live tracked options</li>
+                </ul>
+              </article>
 
-          <!-- Replace href with your real onboarding URL when ready -->
-          <a
-            href="https://onboarding.dlvlogistics.com"
-            class="btn btn-outline"
-            target="_blank"
-            rel="noopener"
-          >
-            Go to carrier onboarding
-          </a>
-        </div>
-      </section>
+              <article class="card">
+                <h3>Heavy and project moves</h3>
+                <p>
+                  Oversized, overweight and specialized equipment including
+                  step deck, double drop, RGN and multi axle solutions.
+                </p>
+                <ul>
+                  <li>Route and permit assistance</li>
+                  <li>Site access and crane coordination</li>
+                  <li>Escorts and scheduling support</li>
+                </ul>
+              </article>
 
-      <!-- ====== Contact / Footer ====== -->
-      <section id="contact" class="section section--alt">
-        <div class="wrap">
-          <h2>Contact</h2>
-          <div class="grid grid-2">
+              <article class="card">
+                <h3>Regulated and high value</h3>
+                <p>
+                  Freight that needs extra control. Sensitive, high value and
+                  regulated loads with documented processes and secure
+                  communication.
+                </p>
+                <ul>
+                  <li>Controlled information flow</li>
+                  <li>Secure appointment management</li>
+                  <li>Detailed records and post trip reporting</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========= Why DLV ========= -->
+        <section id="why" class="section">
+          <div class="wrap">
+            <h2>Why DLV</h2>
+            <p class="section-lead">
+              DLV is a small team with senior level focus. You are never
+              handed off to a script or a random queue.
+            </p>
+
+            <div class="grid grid-3">
+              <article class="card">
+                <h3>Planning first</h3>
+                <p>
+                  We slow down at the start so your freight does not slow down
+                  on the road. Routes, appointments and site details are
+                  checked before the truck is rolling.
+                </p>
+              </article>
+
+              <article class="card">
+                <h3>Daily visibility</h3>
+                <p>
+                  You know where your load sits in plain language. No portals
+                  that nobody checks, just proactive updates in the channels
+                  your team already uses.
+                </p>
+              </article>
+
+              <article class="card">
+                <h3>Team that lives in the details</h3>
+                <p>
+                  A dedicated logistics team that plans every lane, watches
+                  every check call and lives in the follow through so you can
+                  trust what you confirm with your own customers.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========= Quote ========= -->
+        <section id="quote" class="section section-alt">
+          <div class="wrap quote-grid">
             <div>
-              <h3>Talk to our team</h3>
-              <p>
-                Phone:
-  <a href="tel:2267020542">(226)-702-0542</a><br />
-                Email:
-                <a href="mailto:info@dlvlogistics.com">info@dlvlogistics.com</a>
+              <h2>Request a quote</h2>
+              <p class="section-lead">
+                Share the lane, equipment and timing. We reply with a clear
+                plan, all in, with the details that actually matter to your
+                team.
               </p>
+
+              <ul class="quote-points">
+                <li>Route and timing overview</li>
+                <li>Equipment and access notes</li>
+                <li>Price and service options when available</li>
+              </ul>
+            </div>
+
+            <form class="quote-form">
+              <div class="field">
+                <label for="q-name">Name</label>
+                <input id="q-name" type="text" name="name" required />
+              </div>
+              <div class="field">
+                <label for="q-company">Company</label>
+                <input id="q-company" type="text" name="company" />
+              </div>
+              <div class="field">
+                <label for="q-email">Email</label>
+                <input id="q-email" type="email" name="email" required />
+              </div>
+              <div class="field">
+                <label for="q-phone">Phone</label>
+                <input id="q-phone" type="tel" name="phone" />
+              </div>
+              <div class="field">
+                <label for="q-details">Lane and freight details</label>
+                <textarea id="q-details" name="details" rows="4"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">
+                Send request
+              </button>
+              <p class="form-note">
+                Submitting this form sends your details directly to the DLV
+                team. No lists, no spam.
+              </p>
+            </form>
+          </div>
+        </section>
+
+        <!-- ========= Contact ========= -->
+        <section id="contact" class="section section-footer">
+          <div class="wrap contact-grid">
+            <div>
+              <h2>Contact</h2>
               <p>
-                Office hours: Monday–Friday, 8:00–17:00 (local time). Emergency
-                support available for active loads.
+                Reach out for a project, a single lane or a quick gut check on a
+                plan you are building.
               </p>
             </div>
-            <div>
-              <h3>Locations</h3>
+            <div class="contact-details">
               <p>
-                DLV Logistics<br />
-                <!-- Replace with real address -->
-                Main operations hub<br />
+                <strong>Email</strong><br />
+                <a href="mailto:info@dlvlogistics.com"
+                  >info@dlvlogistics.com</a
+                >
+              </p>
+              <p>
+                <strong>Phone</strong><br />
+                <a href="tel:+12267020542">226 702 0542</a>
+              </p>
+              <p>
+                <strong>Office</strong><br />
                 422 Richards Street, Vancouver BC, V6B 2Z4
               </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      <footer class="site-footer">
-        <div class="wrap">
-          <p>© <span id="year"></span> DLV Logistics. All rights reserved.</p>
-        </div>
-      </footer>
-    </main>
+          <footer class="site-footer">
+            <div class="wrap footer-wrap">
+              <span class="footer-dlv">DLV</span>
+              <span class="footer-copy">
+                © <span id="year"></span> DLV Logistics. All rights reserved.
+              </span>
+            </div>
+          </footer>
+        </section>
+      </main>
+    </div>
 
-    <!-- Scripts (placeholder for scroll/motion, form handling, etc.) -->
     <script src="script.js"></script>
   </body>
 </html>
