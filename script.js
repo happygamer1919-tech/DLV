@@ -1,67 +1,113 @@
-// Smooth scroll for nav links and hero button
-document.querySelectorAll('a[href^="#"], [data-scroll-target]').forEach(el => {
-  el.addEventListener("click", e => {
-    const targetId = el.getAttribute("href") || el.getAttribute("data-scroll-target");
-    if (!targetId || !targetId.startsWith("#")) return;
-
-    const target = document.querySelector(targetId);
+// Smooth scroll for in page nav links
+document.querySelectorAll('.nav a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    const id = link.getAttribute('href');
+    const target = document.querySelector(id);
     if (!target) return;
-
     e.preventDefault();
-    const offset = 70; // nav height
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-
-    window.scrollTo({
-      top,
-      behavior: "smooth"
-    });
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
-// Mobile nav toggle
-const navToggle = document.querySelector(".nav-toggle");
-const navList = document.querySelector(".nav-list");
-
-if (navToggle && navList) {
-  navToggle.addEventListener("click", () => {
-    navList.classList.toggle("is-open");
-  });
-
-  navList.addEventListener("click", e => {
-    if (e.target.tagName === "A") {
-      navList.classList.remove("is-open");
-    }
-  });
+// Footer year
+const yearEl = document.getElementById('year');
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
 }
 
-// Active link on scroll
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".nav-list a");
+// Electric lines: fade in once the user scrolls a bit
+(function () {
+  const lines = document.querySelectorAll('.electric-line');
+  if (!lines.length) return;
 
-function setActiveNav() {
-  let currentId = null;
-
-  sections.forEach(sec => {
-    const rect = sec.getBoundingClientRect();
-    if (rect.top <= 90 && rect.bottom >= 140) {
-      currentId = "#" + sec.id;
+  function updateLines() {
+    const scrolled = window.scrollY || window.pageYOffset;
+    if (scrolled > 120) {
+      lines.forEach((l) => l.classList.add('is-visible'));
+      window.removeEventListener('scroll', updateLines);
     }
-  });
+  }
 
-  navLinks.forEach(link => {
-    if (link.getAttribute("href") === currentId) {
-      link.classList.add("is-active");
+  window.addEventListener('scroll', updateLines);
+})();
+
+// Carrier modal and steps
+(function () {
+  const openBtn = document.getElementById('carrierSetupBtn');
+  const modal = document.getElementById('carrierModal');
+  if (!openBtn || !modal) return;
+
+  const closeEls = modal.querySelectorAll('[data-modal-close]');
+  const steps = Array.from(modal.querySelectorAll('.carrier-step'));
+  const prevBtn = document.getElementById('carrierPrevBtn');
+  const nextBtn = document.getElementById('carrierNextBtn');
+  const submitBtn = document.getElementById('carrierSubmitBtn');
+  const form = document.getElementById('carrierForm');
+
+  let currentStep = 0;
+
+  function applyStep() {
+    steps.forEach((step, idx) => {
+      step.classList.toggle('is-active', idx === currentStep);
+    });
+
+    if (currentStep === 0) {
+      prevBtn.style.display = 'none';
+      nextBtn.style.display = 'inline-flex';
+      submitBtn.style.display = 'none';
+    } else if (currentStep === steps.length - 1) {
+      prevBtn.style.display = 'inline-flex';
+      nextBtn.style.display = 'none';
+      submitBtn.style.display = 'inline-flex';
     } else {
-      link.classList.remove("is-active");
+      prevBtn.style.display = 'inline-flex';
+      nextBtn.style.display = 'inline-flex';
+      submitBtn.style.display = 'none';
+    }
+  }
+
+  function openModal() {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    currentStep = 0;
+    applyStep();
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeEls.forEach((el) => el.addEventListener('click', closeModal));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
     }
   });
-}
 
-window.addEventListener("scroll", setActiveNav);
-window.addEventListener("load", setActiveNav);
+  nextBtn.addEventListener('click', () => {
+    if (currentStep < steps.length - 1) {
+      currentStep += 1;
+      applyStep();
+    }
+  });
 
-// Year in footer
-const yearSpan = document.getElementById("year");
-if (yearSpan) {
-  yearSpan.textContent = new Date().getFullYear();
-}
+  prevBtn.addEventListener('click', () => {
+    if (currentStep > 0) {
+      currentStep -= 1;
+      applyStep();
+    }
+  });
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      // Let the mailto submit happen, but run built in validation first
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        form.reportValidity();
+      }
+      // If valid, browser will open an email draft to info@dlvlogistics.com
+    });
+  }
+})();
