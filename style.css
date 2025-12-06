@@ -2,11 +2,9 @@
   --bg: #020814;
   --bg-alt: #050f24;
   --card: #07152b;
-  --line: rgba(90, 130, 200, 0.6);
   --text: #f5f9ff;
   --muted: #9fb3d9;
   --accent: #71ffbc;
-  --accent-soft: rgba(113, 255, 188, 0.12);
   --accent-strong: #00ff9e;
   --danger: #ff5c7a;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.65);
@@ -30,7 +28,6 @@ body {
     "Inter", sans-serif;
 }
 
-/* Smooth overall scroll + snap pages */
 html {
   scroll-behavior: smooth;
 }
@@ -47,10 +44,12 @@ main {
 
 .section {
   position: relative;
-  padding: 80px 0;
+  padding: 96px 0;
   z-index: 1;
   min-height: 100vh;
   scroll-snap-align: start;
+  display: flex;
+  align-items: center;
 }
 
 .section-alt {
@@ -66,6 +65,20 @@ main {
   max-width: 620px;
   color: var(--muted);
   margin: 0 0 24px;
+}
+
+/* Content animation wrapper */
+.section-content {
+  position: relative;
+  z-index: 1;
+  transform: translateY(32px);
+  opacity: 0;
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.section-active .section-content {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Header / nav */
@@ -130,9 +143,7 @@ main {
   opacity: 0.88;
   padding: 6px 10px;
   border-radius: 999px;
-  transition:
-    opacity 0.18s ease,
-    transform 0.18s ease;
+  transition: opacity 0.18s ease, transform 0.18s ease;
 }
 
 .nav a::before {
@@ -191,7 +202,7 @@ main {
 
 /* Hero */
 .hero {
-  padding: 96px 0 80px;
+  padding-top: 120px;
 }
 
 .hero-layout {
@@ -220,8 +231,6 @@ main {
 
 /* Graffiti DLV word */
 .dlv-graffiti {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display",
-    "Inter", sans-serif;
   font-weight: 900;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -559,292 +568,4 @@ main {
   z-index: 1;
   max-width: 900px;
   width: min(900px, 100% - 24px);
-  max-height: calc(100% - 40px);
-  background: radial-gradient(circle at top, #071b37 0, #020814 70%);
-  border-radius: 18px;
-  border: 1px solid rgba(113, 255, 188, 0.4);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8);
-  padding: 26px 24px 18px;
-  color: var(--text);
-  overflow: auto;
-}
-
-.modal-dialog h2 {
-  margin: 0 0 6px;
-  font-size: 20px;
-}
-
-.modal-intro {
-  margin: 0 0 16px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.modal-note {
-  margin: 0 0 10px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.modal-close {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  border: none;
-  background: transparent;
-  color: var(--muted);
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* Carrier form in modal */
-.carrier-step {
-  display: none;
-}
-
-.carrier-step.is-active {
-  display: block;
-}
-
-.carrier-step h3 {
-  font-size: 17px;
-  margin: 0 0 8px;
-}
-
-.carrier-step h4 {
-  font-size: 13px;
-  margin: 12px 0 4px;
-}
-
-.field-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 10px 14px;
-  margin-bottom: 10px;
-}
-
-.field-grid label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 12px;
-}
-
-.field-grid input,
-.carrier-form textarea {
-  border-radius: 8px;
-  border: 1px solid rgba(159, 179, 217, 0.6);
-  background: rgba(3, 12, 28, 0.98);
-  color: var(--text);
-  padding: 6px 8px;
-  font-size: 13px;
-}
-
-.carrier-form textarea {
-  resize: vertical;
-}
-
-.carrier-step-nav {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-#carrierPrevBtn {
-  display: none;
-}
-
-#carrierSubmitBtn {
-  display: none;
-}
-
-/* Electric lines */
-.electric-line {
-  position: fixed;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0;
-  background: linear-gradient(90deg, transparent, var(--accent-strong), transparent);
-  filter: blur(0.5px);
-  transition:
-    opacity 0.6s ease,
-    box-shadow 0.8s ease,
-    transform 0.8s ease,
-    top 0.8s ease,
-    bottom 0.8s ease;
-}
-
-.electric-line--tl {
-  top: 110px;
-  left: 0;
-  width: 40%;
-  height: 1px;
-}
-
-.electric-line--br {
-  bottom: 120px;
-  right: 0;
-  width: 36%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent-strong), transparent);
-}
-
-/* Base visible state after initial scroll */
-.electric-line.is-visible {
-  opacity: 0.9;
-  animation: electricPulse 3.6s linear infinite;
-}
-
-@keyframes electricPulse {
-  0% {
-    box-shadow: 0 0 18px rgba(0, 255, 158, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(0, 255, 158, 0.7);
-  }
-  100% {
-    box-shadow: 0 0 18px rgba(0, 255, 158, 0.3);
-  }
-}
-
-/* Section specific line motion so it does not cut awkwardly */
-body.section-who .electric-line--br {
-  bottom: 80px;
-  transform: translateX(-8px);
-}
-
-body.section-services .electric-line--br {
-  bottom: 180px;
-  transform: translateX(-24px);
-}
-
-body.section-why .electric-line--br {
-  bottom: 90px;
-  transform: translateX(-40px);
-}
-
-body.section-quote .electric-line--br {
-  bottom: 170px;
-  transform: translateX(-10px);
-}
-
-body.section-contact .electric-line--br {
-  bottom: 80px;
-  transform: translateX(-26px);
-}
-
-body.section-carriers .electric-line--br {
-  bottom: 140px;
-  transform: translateX(-4px);
-}
-
-/* Truck backgrounds per section */
-.section-with-truck {
-  overflow: hidden;
-}
-
-.section-with-truck::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at right, rgba(0, 255, 158, 0.18), transparent 55%),
-    linear-gradient(to right, #020814 0, transparent 55%);
-  pointer-events: none;
-  z-index: -2;
-}
-
-.section-truck {
-  position: absolute;
-  inset: 0;
-  background-position: right center;
-  background-repeat: no-repeat;
-  background-size: auto 90%;
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  z-index: -1;
-}
-
-/* Plug your actual images here */
-.truck-dryvan .section-truck {
-  background-image: url("assets/truck-dryvan.jpg");
-}
-
-.truck-reefer .section-truck {
-  background-image: url("assets/truck-reefer.jpg");
-}
-
-.truck-flatbed .section-truck {
-  background-image: url("assets/truck-flatbed.jpg");
-}
-
-.truck-stepdeck .section-truck {
-  background-image: url("assets/truck-stepdeck.jpg");
-}
-
-.truck-straight .section-truck {
-  background-image: url("assets/truck-straight.jpg");
-}
-
-.truck-poweronly .section-truck {
-  background-image: url("assets/truck-poweronly.jpg");
-}
-
-/* When section is active, truck fades from shadows */
-.section-active .section-truck {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .hero-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-aside {
-    order: -1;
-  }
-
-  .quote-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .section-truck {
-    background-size: auto 70%;
-    opacity: 0.16;
-    transform: translateX(0);
-  }
-
-  .section-active .section-truck {
-    opacity: 0.3;
-  }
-}
-
-@media (max-width: 720px) {
-  .nav ul {
-    display: none;
-  }
-
-  .hero {
-    padding-top: 70px;
-  }
-
-  .hero-tags {
-    flex-wrap: wrap;
-  }
-
-  .tiles,
-  .service-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .modal-dialog {
-    padding: 22px 18px 14px;
-    max-height: calc(100% - 24px);
-  }
-}
+  max-height: cal
