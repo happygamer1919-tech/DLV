@@ -225,21 +225,50 @@ main {
   margin-bottom: 16px;
 }
 
-/* Hero emblem */
+/* Hero emblem - BIG symbol */
 .hero-emblem {
   position: absolute;
-  top: 120px;
-  right: 8%;
-  width: 220px;
-  height: 220px;
+  top: 115px;
+  right: 7%;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
   background:
-    radial-gradient(circle at center, rgba(0, 255, 158, 0.32), transparent 60%),
-    radial-gradient(circle at center, rgba(0, 0, 0, 0.9), #020814);
+    radial-gradient(circle at center, rgba(0, 255, 158, 0.35), transparent 65%),
+    radial-gradient(circle at center, #020814, #020814);
+  border: 1px solid rgba(113, 255, 188, 0.7);
   box-shadow:
-    0 0 40px rgba(0, 255, 158, 0.5),
-    0 0 120px rgba(0, 255, 158, 0.25);
-  opacity: 0.18;
+    0 0 45px rgba(0, 255, 158, 0.7),
+    0 0 130px rgba(0, 255, 158, 0.3);
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-emblem::before {
+  content: "DLV";
+  font-weight: 800;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-size: 15px;
+  color: var(--accent);
+  text-shadow:
+    0 0 18px rgba(0, 255, 158, 0.9),
+    0 0 40px rgba(0, 255, 158, 0.8);
+}
+
+.hero-emblem::after {
+  content: "";
+  position: absolute;
+  width: 135%;
+  height: 135%;
+  border-radius: 50%;
+  border: 1px dashed rgba(113, 255, 188, 0.3);
+  box-shadow: 0 0 30px rgba(0, 255, 158, 0.45);
+  transform: rotate(18deg);
 }
 
 /* Graffiti DLV word */
@@ -712,6 +741,7 @@ main {
   overflow: hidden;
 }
 
+/* Glow backdrop on the truck side */
 .section-with-truck::before {
   content: "";
   position: absolute;
@@ -721,6 +751,19 @@ main {
     linear-gradient(to right, #020814 0, transparent 55%);
   pointer-events: none;
   z-index: -2;
+}
+
+/* Bottom fade so no hard rectangle edge from PNGs */
+.section-with-truck::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 35%;
+  background: linear-gradient(to bottom, rgba(2, 8, 20, 0) 0, #020814 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .section-truck {
@@ -783,7 +826,7 @@ main {
   }
 
   .hero-emblem {
-    display: none;
+    display: none; /* mobile: free up space */
   }
 
   .hero-info-grid {
