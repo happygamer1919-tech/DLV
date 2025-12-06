@@ -44,7 +44,7 @@ if (yearEl) {
   }
 
   function onScroll() {
-    const viewportCenter = window.scrollY + window.innerHeight * 0.35;
+    const viewportCenter = window.scrollY + window.innerHeight * 0.38;
     let activeId = sections[0].id;
 
     for (const sec of sections) {
@@ -61,7 +61,7 @@ if (yearEl) {
 
   window.addEventListener('scroll', onScroll);
   window.addEventListener('resize', onScroll);
-  onScroll(); // initial call
+  onScroll(); // initial
 })();
 
 // Carrier modal and steps
