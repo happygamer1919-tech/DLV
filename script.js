@@ -15,24 +15,7 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// Electric lines: fade in once the user scrolls a bit
-(function () {
-  const lines = document.querySelectorAll('.electric-line');
-  if (!lines.length) return;
-
-  function updateLines() {
-    const scrolled = window.scrollY || window.pageYOffset;
-    if (scrolled > 80) {
-      lines.forEach((l) => l.classList.add('is-visible'));
-      window.removeEventListener('scroll', updateLines);
-    }
-  }
-
-  window.addEventListener('scroll', updateLines);
-  updateLines();
-})();
-
-// Section tracking for trucks, nav highlight, and line motion
+// Section tracking for trucks, nav highlight, and content animation
 (function () {
   const sections = Array.from(document.querySelectorAll('main section[id]'));
   if (!sections.length) return;
@@ -78,7 +61,7 @@ if (yearEl) {
 
   window.addEventListener('scroll', onScroll);
   window.addEventListener('resize', onScroll);
-  onScroll();
+  onScroll(); // initial call
 })();
 
 // Carrier modal and steps
@@ -152,12 +135,11 @@ if (yearEl) {
 
   if (form) {
     form.addEventListener('submit', (e) => {
-      // Let the mailto submit happen, but run built in validation first
       if (!form.checkValidity()) {
         e.preventDefault();
         form.reportValidity();
       }
-      // If valid, browser will open an email draft to info@dlvlogistics.com
+      // if valid, browser opens email draft via mailto
     });
   }
 })();
