@@ -4,29 +4,21 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// ===== Page stack + sections (for snap scrolling) =====
-const stack = document.querySelector('.page-stack');
-const sections = stack
-  ? Array.from(stack.querySelectorAll('.page-section'))
-  : Array.from(document.querySelectorAll('section'));
-
+// ===== Sections for snapping =====
+const sections = Array.from(document.querySelectorAll('.page-section'));
 let isSnapping = false;
 
-// Helper: smooth scroll inside the stack with custom duration
-function smoothScrollToSection(container, targetSection, duration) {
-  if (!container || !targetSection) return;
-
-  const start = container.scrollTop;
-  const end = targetSection.offsetTop;
-  const distance = end - start;
+// Easing scroll to a Y position
+function smoothScrollTo(targetY, duration) {
+  const startY = window.scrollY || window.pageYOffset;
+  const distance = targetY - startY;
   const startTime = performance.now();
 
   function step(now) {
     const elapsed = now - startTime;
     const t = Math.min(1, elapsed / duration);
-    // ease-in-out curve
-    const eased = 0.5 - Math.cos(Math.PI * t) / 2;
-    container.scrollTop = start + distance * eased;
+    const eased = 0.5 - Math.cos(Math.PI * t) / 2; // ease-in-out
+    window.scrollTo(0, startY + distance * eased);
 
     if (t < 1) {
       requestAnimationFrame(step);
@@ -38,52 +30,49 @@ function smoothScrollToSection(container, targetSection, duration) {
   requestAnimationFrame(step);
 }
 
-// Helper: which section is closest to current scrollTop
-function getCurrentSectionIndex(container, sectionList) {
-  const top = container.scrollTop;
-  let closestIdx = 0;
-  let minDist = Infinity;
+function getCurrentSectionIndex() {
+  const y = window.scrollY || window.pageYOffset;
+  let bestIdx = 0;
+  let bestDist = Infinity;
 
-  sectionList.forEach((sec, idx) => {
-    const dist = Math.abs(sec.offsetTop - top);
-    if (dist < minDist) {
-      minDist = dist;
-      closestIdx = idx;
+  sections.forEach((sec, idx) => {
+    const top = sec.offsetTop;
+    const dist = Math.abs(top - y);
+    if (dist < bestDist) {
+      bestDist = dist;
+      bestIdx = idx;
     }
   });
 
-  return closestIdx;
+  return bestIdx;
 }
 
-// ===== Wheel-based snap scrolling (one scroll = one section) =====
-if (stack && sections.length) {
-  stack.addEventListener(
+// Wheel-based snap: one scroll = next / previous section
+if (sections.length) {
+  window.addEventListener(
     'wheel',
     (e) => {
-      // allow browser zoom with Ctrl+scroll
-      if (e.ctrlKey) return;
-
+      if (e.ctrlKey) return; // allow zoom
       e.preventDefault();
       if (isSnapping) return;
 
-      const direction = e.deltaY > 0 ? 1 : -1;
-      const currentIdx = getCurrentSectionIndex(stack, sections);
-      const targetIdx = Math.min(
-        sections.length - 1,
-        Math.max(0, currentIdx + direction)
+      const dir = e.deltaY > 0 ? 1 : -1;
+      const current = getCurrentSectionIndex();
+      const target = Math.max(
+        0,
+        Math.min(sections.length - 1, current + dir)
       );
 
-      if (targetIdx === currentIdx) return;
+      if (target === current) return;
 
       isSnapping = true;
-      // 1400ms = slower, smoother transition
-      smoothScrollToSection(stack, sections[targetIdx], 1400);
+      smoothScrollTo(sections[target].offsetTop, 1400); // slower slide
     },
     { passive: false }
   );
 }
 
-// ===== Nav links: smooth jump to section (using same custom scroll) =====
+// Nav links use same scroll function
 const navLinks = Array.from(document.querySelectorAll('.nav a[href^="#"]'));
 
 navLinks.forEach((link) => {
@@ -91,44 +80,30 @@ navLinks.forEach((link) => {
     const id = link.getAttribute('href');
     const target = document.querySelector(id);
     if (!target) return;
-
     e.preventDefault();
 
-    if (stack && sections.length) {
-      const targetSection =
-        target.classList.contains('page-section')
-          ? target
-          : target.closest('.page-section') || target;
-
-      isSnapping = true;
-      smoothScrollToSection(stack, targetSection, 1400);
-    } else {
-      // Fallback: normal viewport smooth scroll
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    isSnapping = true;
+    smoothScrollTo(target.offsetTop, 1400);
   });
 });
 
-// ===== Active nav highlight based on visible section =====
+// Active nav highlight
 if (sections.length && navLinks.length) {
-  const observerOptions = stack
-    ? { root: stack, threshold: 0.5 }
-    : { threshold: 0.5 };
+  const observer = new IntersectionObserver(
+    (entries) => {
+      let visible = entries
+        .filter((e) => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    let best = entries
-      .filter((e) => e.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-    if (!best) return;
-
-    const activeId = '#' + best.target.id;
-
-    navLinks.forEach((link) => {
-      const match = link.getAttribute('href') === activeId;
-      link.classList.toggle('is-active', match);
-    });
-  }, observerOptions);
+      const activeId = '#' + visible.target.id;
+      navLinks.forEach((link) => {
+        const match = link.getAttribute('href') === activeId;
+        link.classList.toggle('is-active', match);
+      });
+    },
+    { threshold: 0.55 }
+  );
 
   sections.forEach((sec) => observer.observe(sec));
 }
@@ -205,12 +180,11 @@ if (sections.length && navLinks.length) {
 
   if (form) {
     form.addEventListener('submit', (e) => {
-      // Run HTML5 validation before letting the mailto: fire
       if (!form.checkValidity()) {
         e.preventDefault();
         form.reportValidity();
       }
-      // If valid, browser opens an email draft to info@dlvlogistics.com
+      // if valid, mailto: opens in client
     });
   }
 })();
