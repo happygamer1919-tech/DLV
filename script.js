@@ -1,4 +1,4 @@
-// Smooth scroll for in page nav links
+// Smooth scroll for in-page nav links
 document.querySelectorAll('.nav a[href^="#"]').forEach((link) => {
   link.addEventListener('click', (e) => {
     const id = link.getAttribute('href');
@@ -32,7 +32,7 @@ if (yearEl) {
   updateLines();
 })();
 
-// Section observer for trucks, nav highlight, and line motion
+// Section tracking for trucks, nav highlight, and line motion
 (function () {
   const sections = Array.from(document.querySelectorAll('main section[id]'));
   if (!sections.length) return;
@@ -42,19 +42,17 @@ if (yearEl) {
 
   function setActiveSection(id) {
     if (!id || currentActiveId === id) return;
-    // Body class for electric lines
+
     if (currentActiveId) {
       document.body.classList.remove(`section-${currentActiveId}`);
     }
     document.body.classList.add(`section-${id}`);
     currentActiveId = id;
 
-    // Section active class for trucks
     sections.forEach((sec) => {
       sec.classList.toggle('section-active', sec.id === id);
     });
 
-    // Nav active link
     navLinks.forEach((link) => {
       const href = link.getAttribute('href');
       const matches = href === `#${id}`;
@@ -62,42 +60,25 @@ if (yearEl) {
     });
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      let best = null;
+  function onScroll() {
+    const viewportCenter = window.scrollY + window.innerHeight * 0.35;
+    let activeId = sections[0].id;
 
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        if (!best || entry.intersectionRatio > best.intersectionRatio) {
-          best = entry;
-        }
-      });
-
-      if (best && best.target && best.target.id) {
-        setActiveSection(best.target.id);
+    for (const sec of sections) {
+      const top = sec.offsetTop;
+      const height = sec.offsetHeight;
+      if (viewportCenter >= top && viewportCenter < top + height) {
+        activeId = sec.id;
+        break;
       }
-    },
-    {
-      threshold: [0.4, 0.6, 0.8],
-      rootMargin: '0px 0px -20% 0px',
     }
-  );
 
-  sections.forEach((sec) => observer.observe(sec));
-
-  // Initialize based on current scroll position
-  const firstInView = sections.find((sec) => {
-    const rect = sec.getBoundingClientRect();
-    const vh = window.innerHeight || document.documentElement.clientHeight;
-    const visible =
-      rect.top < vh * 0.6 && rect.bottom > vh * 0.2;
-    return visible;
-  });
-  if (firstInView) {
-    setActiveSection(firstInView.id);
-  } else if (sections[0]) {
-    setActiveSection(sections[0].id);
+    setActiveSection(activeId);
   }
+
+  window.addEventListener('scroll', onScroll);
+  window.addEventListener('resize', onScroll);
+  onScroll();
 })();
 
 // Carrier modal and steps
