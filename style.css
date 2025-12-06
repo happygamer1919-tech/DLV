@@ -37,7 +37,9 @@ body {
 }
 
 .section {
+  position: relative;
   padding: 72px 0;
+  z-index: 1;
 }
 
 .section-alt {
@@ -93,17 +95,14 @@ body {
 }
 
 .brand-main {
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: 800;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  font-size: 11px;
+  font-size: 13px;
+  color: #ffffff;
 }
 
-.brand-sub {
-  color: var(--muted);
-  font-size: 10px;
-}
-
+/* Navigation */
 .nav ul {
   list-style: none;
   display: flex;
@@ -113,18 +112,48 @@ body {
 }
 
 .nav a {
+  position: relative;
   color: var(--text);
   text-decoration: none;
   font-size: 13px;
   opacity: 0.88;
-  padding: 6px 8px;
-  border-radius: 8px;
-  transition: opacity 0.18s ease, background 0.18s ease;
+  padding: 6px 10px;
+  border-radius: 999px;
+  transition:
+    opacity 0.18s ease,
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.nav a::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(0, 255, 158, 0.22), transparent 60%);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: -1;
 }
 
 .nav a:hover {
   opacity: 1;
-  background: rgba(20, 34, 69, 0.8);
+}
+
+.nav a:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav a.is-active {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.nav a.is-active::before {
+  opacity: 1;
+  transform: scale(1.02);
 }
 
 .nav-cta {
@@ -152,7 +181,7 @@ body {
 
 /* Hero */
 .hero {
-  padding: 72px 0 80px;
+  padding: 88px 0 80px;
 }
 
 .hero-layout {
@@ -221,7 +250,10 @@ body {
   border: none;
   cursor: pointer;
   text-decoration: none;
-  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease,
+  transition:
+    transform 0.14s ease,
+    box-shadow 0.14s ease,
+    background 0.14s ease,
     color 0.14s ease;
 }
 
@@ -249,7 +281,7 @@ body {
 /* Hero tags */
 .hero-tags {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 10px;
 }
 
@@ -263,9 +295,13 @@ body {
 }
 
 .tag-strong {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--accent);
-  background: radial-gradient(circle at top, rgba(113, 255, 188, 0.18), transparent);
+  background: radial-gradient(
+    circle at top,
+    rgba(113, 255, 188, 0.18),
+    transparent
+  );
 }
 
 /* Hero right cards */
@@ -487,14 +523,16 @@ body {
 .modal-dialog {
   position: relative;
   z-index: 1;
-  max-width: 720px;
-  width: min(720px, 100% - 32px);
+  max-width: 900px;
+  width: min(900px, 100% - 24px);
+  max-height: calc(100% - 40px);
   background: radial-gradient(circle at top, #071b37 0, #020814 70%);
   border-radius: 18px;
   border: 1px solid rgba(113, 255, 188, 0.4);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8);
   padding: 26px 24px 18px;
   color: var(--text);
+  overflow: auto;
 }
 
 .modal-dialog h2 {
@@ -595,7 +633,12 @@ body {
   opacity: 0;
   background: linear-gradient(90deg, transparent, var(--accent-strong), transparent);
   filter: blur(0.5px);
-  transition: opacity 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    box-shadow 0.8s ease,
+    transform 0.8s ease,
+    top 0.8s ease,
+    bottom 0.8s ease;
 }
 
 .electric-line--tl {
@@ -613,7 +656,7 @@ body {
   background: linear-gradient(90deg, transparent, var(--accent-strong), transparent);
 }
 
-/* Visible when scrolled (script adds class) */
+/* Base visible state after initial scroll */
 .electric-line.is-visible {
   opacity: 0.9;
   animation: electricPulse 3.6s linear infinite;
@@ -631,6 +674,104 @@ body {
   }
 }
 
+/* Section specific line motion */
+body.section-who .electric-line--br {
+  bottom: 60px;
+  transform: translateX(-8px);
+}
+
+body.section-services .electric-line--br {
+  bottom: 180px;
+  transform: translateX(-24px);
+}
+
+body.section-why .electric-line--br {
+  bottom: 90px;
+  transform: translateX(-40px);
+}
+
+body.section-quote .electric-line--br {
+  bottom: 170px;
+  transform: translateX(-10px);
+}
+
+body.section-contact .electric-line--br {
+  bottom: 80px;
+  transform: translateX(-32px);
+}
+
+body.section-carriers .electric-line--br {
+  bottom: 140px;
+  transform: translateX(-4px);
+}
+
+/* Truck backgrounds per section */
+.section-with-truck {
+  overflow: hidden;
+}
+
+.section-with-truck::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at right, rgba(0, 255, 158, 0.18), transparent 55%),
+    linear-gradient(to right, #020814 0, transparent 55%);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.section-truck {
+  position: absolute;
+  inset: 0;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: auto 90%;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: -1;
+}
+
+/* You plug your own images here */
+.truck-dryvan .section-truck {
+  /* Dry van for Who we serve */
+  background-image: url("assets/truck-dryvan.jpg");
+}
+
+.truck-reefer .section-truck {
+  /* Reefer for Services */
+  background-image: url("assets/truck-reefer.jpg");
+}
+
+.truck-flatbed .section-truck {
+  /* Flatbed for Why DLV */
+  background-image: url("assets/truck-flatbed.jpg");
+}
+
+.truck-stepdeck .section-truck {
+  /* Step deck for Get a quote */
+  background-image: url("assets/truck-stepdeck.jpg");
+}
+
+.truck-straight .section-truck {
+  /* Straight truck for Contact */
+  background-image: url("assets/truck-straight.jpg");
+}
+
+.truck-poweronly .section-truck {
+  /* Power only tractor front for Carriers */
+  background-image: url("assets/truck-poweronly.jpg");
+}
+
+/* When section is active, truck fades from shadows */
+.section-active .section-truck {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .hero-layout {
@@ -644,6 +785,16 @@ body {
   .quote-layout {
     grid-template-columns: 1fr;
   }
+
+  .section-truck {
+    background-size: auto 70%;
+    opacity: 0.16;
+    transform: translateX(0);
+  }
+
+  .section-active .section-truck {
+    opacity: 0.3;
+  }
 }
 
 @media (max-width: 720px) {
@@ -652,7 +803,11 @@ body {
   }
 
   .hero {
-    padding-top: 50px;
+    padding-top: 60px;
+  }
+
+  .hero-tags {
+    flex-wrap: wrap;
   }
 
   .tiles,
@@ -662,5 +817,6 @@ body {
 
   .modal-dialog {
     padding: 22px 18px 14px;
+    max-height: calc(100% - 24px);
   }
 }
