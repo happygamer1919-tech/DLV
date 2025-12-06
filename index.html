@@ -18,7 +18,6 @@
         <img src="assets/DLV_logo.jpg" alt="DLV Logistics logo" class="brand-logo" />
         <span class="brand-text">
           <span class="brand-main">DLV Logistics</span>
-          <span class="brand-sub">Cross border. Heavy. High value.</span>
         </span>
       </a>
 
@@ -42,7 +41,7 @@
 
   <!-- ===== Hero ===== -->
   <main>
-    <section id="hero" class="hero">
+    <section id="hero" class="hero section">
       <div class="wrap hero-layout">
         <div class="hero-main">
           <p class="dlv-graffiti" aria-hidden="true">DLV</p>
@@ -61,9 +60,9 @@
           </div>
 
           <div class="hero-tags">
-            <span class="tag tag-strong">Canada &amp; USA cross border</span>
-            <span class="tag tag-strong">Heavy &amp; over dimensional</span>
-            <span class="tag tag-strong">High value &amp; regulated freight</span>
+            <span class="tag tag-strong">Canada and USA cross border</span>
+            <span class="tag tag-strong">Heavy and over dimensional</span>
+            <span class="tag tag-strong">High value and regulated freight</span>
           </div>
         </div>
 
@@ -86,8 +85,9 @@
       </div>
     </section>
 
-    <!-- ===== Who we serve ===== -->
-    <section id="who" class="section">
+    <!-- ===== Who we serve (Dry van) ===== -->
+    <section id="who" class="section section-with-truck truck-dryvan">
+      <div class="section-truck" aria-hidden="true"></div>
       <div class="wrap">
         <h2>Who we serve</h2>
         <p class="section-intro">
@@ -112,7 +112,7 @@
           </article>
 
           <article class="tile">
-            <h3>Agents / brokers</h3>
+            <h3>Agents and brokers</h3>
             <p>
               Need a partner that can help with heavy, sensitive, or cross
               border moves. We support existing books of business and project
@@ -128,8 +128,9 @@
       </div>
     </section>
 
-    <!-- ===== Services ===== -->
-    <section id="services" class="section section-alt">
+    <!-- ===== Services (Reefer) ===== -->
+    <section id="services" class="section section-alt section-with-truck truck-reefer">
+      <div class="section-truck" aria-hidden="true"></div>
       <div class="wrap">
         <h2>Services</h2>
         <p class="section-intro">
@@ -139,7 +140,7 @@
 
         <div class="service-grid">
           <article class="service">
-            <h3>Truckload &amp; LTL</h3>
+            <h3>Truckload and LTL</h3>
             <p>
               Dry van, reefer, deck, and more across Canada and the United
               States. Regular lanes or last minute solves, covered with live
@@ -148,7 +149,7 @@
           </article>
 
           <article class="service">
-            <h3>Heavy haul &amp; projects</h3>
+            <h3>Heavy haul and projects</h3>
             <p>
               Oversize and overweight freight with permits, escorts, and route
               checks built in. We coordinate with plants, yards, and job sites
@@ -157,7 +158,7 @@
           </article>
 
           <article class="service">
-            <h3>High value &amp; regulated</h3>
+            <h3>High value and regulated</h3>
             <p>
               Sensitive cargo that needs the right carriers and tight process.
               Temperature control, secure freight, and regulated commodities
@@ -166,7 +167,7 @@
           </article>
 
           <article class="service">
-            <h3>Cross border Canada / USA</h3>
+            <h3>Cross border Canada and USA</h3>
             <p>
               Daily experience with customs, paperwork, and brokers on both
               sides. We keep everyone aligned so border crossings are planned,
@@ -177,8 +178,9 @@
       </div>
     </section>
 
-    <!-- ===== Why DLV ===== -->
-    <section id="why" class="section">
+    <!-- ===== Why DLV (Flatbed) ===== -->
+    <section id="why" class="section section-with-truck truck-flatbed">
+      <div class="section-truck" aria-hidden="true"></div>
       <div class="wrap">
         <h2>Why DLV</h2>
         <p class="section-intro">
@@ -216,8 +218,9 @@
       </div>
     </section>
 
-    <!-- ===== Get a quote ===== -->
-    <section id="quote" class="section section-alt">
+    <!-- ===== Get a quote (Step deck) ===== -->
+    <section id="quote" class="section section-alt section-with-truck truck-stepdeck">
+      <div class="section-truck" aria-hidden="true"></div>
       <div class="wrap quote-layout">
         <div class="quote-copy">
           <h2>Request a quote</h2>
@@ -258,11 +261,11 @@
 
           <div class="field-row">
             <label>
-              Origin city, state / province
+              Origin city, state or province
               <input name="Origin" required />
             </label>
             <label>
-              Destination city, state / province
+              Destination city, state or province
               <input name="Destination" required />
             </label>
           </div>
@@ -288,25 +291,9 @@
       </div>
     </section>
 
-    <!-- ===== Carriers ===== -->
-    <section id="carriers" class="section">
-      <div class="wrap carriers">
-        <div class="carriers-copy">
-          <h2>Carriers</h2>
-          <p>
-            We work with reliable carriers who care about service and safety as
-            much as we do. Join our network and work with a team that treats you
-            like a partner, not a line on a load board.
-          </p>
-          <button class="btn-outline" id="carrierSetupBtn">
-            Begin carrier set up
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Contact ===== -->
-    <section id="contact" class="section section-alt">
+    <!-- ===== Contact (Straight truck) ===== -->
+    <section id="contact" class="section section-with-truck truck-straight">
+      <div class="section-truck" aria-hidden="true"></div>
       <div class="wrap contact-layout">
         <div>
           <h2>Contact</h2>
@@ -320,6 +307,24 @@
               422 Richards Street, Vancouver BC, V6B 2Z4
             </li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Carriers (Power only front) ===== -->
+    <section id="carriers" class="section section-alt section-with-truck truck-poweronly">
+      <div class="section-truck" aria-hidden="true"></div>
+      <div class="wrap carriers">
+        <div class="carriers-copy">
+          <h2>Carriers</h2>
+          <p>
+            We work with reliable carriers who care about service and safety as
+            much as we do. Join our network and work with a team that treats you
+            like a partner, not a line on a load board.
+          </p>
+          <button class="btn-outline" id="carrierSetupBtn">
+            Begin carrier set up
+          </button>
         </div>
       </div>
     </section>
@@ -349,7 +354,6 @@
         email client before sending.
       </p>
 
-      <!-- Mailto based submit, like the quote form -->
       <form
         id="carrierForm"
         class="carrier-form"
