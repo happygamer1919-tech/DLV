@@ -1,4 +1,4 @@
-// Smooth scroll for in-page nav links
+// Smooth scroll for in page nav links
 document.querySelectorAll('.nav a[href^="#"]').forEach((link) => {
   link.addEventListener('click', (e) => {
     const id = link.getAttribute('href');
@@ -15,56 +15,97 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// Section tracking for trucks, nav highlight, and content animation
+// ===== Page-by-page scroll (A4 pages feeling) =====
 (function () {
-  const sections = Array.from(document.querySelectorAll('main section[id]'));
-  if (!sections.length) return;
+  const stack = document.querySelector('.page-stack');
+  const sections = Array.from(document.querySelectorAll('main .section'));
+  if (!stack || !sections.length) return;
 
-  const navLinks = Array.from(document.querySelectorAll('.nav a[href^="#"]'));
-  let currentActiveId = null;
+  let isSnapping = false;
 
-  function setActiveSection(id) {
-    if (!id || currentActiveId === id) return;
+  function currentSectionIndex() {
+    const scrollTop = stack.scrollTop;
+    let bestIdx = 0;
+    let bestDelta = Infinity;
 
-    if (currentActiveId) {
-      document.body.classList.remove(`section-${currentActiveId}`);
-    }
-    document.body.classList.add(`section-${id}`);
-    currentActiveId = id;
-
-    sections.forEach((sec) => {
-      sec.classList.toggle('section-active', sec.id === id);
-    });
-
-    navLinks.forEach((link) => {
-      const href = link.getAttribute('href');
-      const matches = href === `#${id}`;
-      link.classList.toggle('is-active', matches);
-    });
-  }
-
-  function onScroll() {
-    const viewportCenter = window.scrollY + window.innerHeight * 0.38;
-    let activeId = sections[0].id;
-
-    for (const sec of sections) {
-      const top = sec.offsetTop;
-      const height = sec.offsetHeight;
-      if (viewportCenter >= top && viewportCenter < top + height) {
-        activeId = sec.id;
-        break;
+    sections.forEach((sec, idx) => {
+      const delta = Math.abs(sec.offsetTop - scrollTop);
+      if (delta < bestDelta) {
+        bestDelta = delta;
+        bestIdx = idx;
       }
-    }
+    });
 
-    setActiveSection(activeId);
+    return bestIdx;
   }
 
-  window.addEventListener('scroll', onScroll);
-  window.addEventListener('resize', onScroll);
-  onScroll(); // initial
+  stack.addEventListener(
+    'wheel',
+    (e) => {
+      const delta = e.deltaY;
+      if (Math.abs(delta) < 20) return;
+      if (isSnapping) return;
+
+      e.preventDefault();
+
+      const idx = currentSectionIndex();
+      let targetIdx = idx;
+
+      if (delta > 0 && idx < sections.length - 1) {
+        targetIdx = idx + 1;
+      } else if (delta < 0 && idx > 0) {
+        targetIdx = idx - 1;
+      }
+
+      if (targetIdx === idx) return;
+
+      isSnapping = true;
+      sections[targetIdx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        isSnapping = false;
+      }, 900);
+    },
+    { passive: false }
+  );
 })();
 
-// Carrier modal and steps
+// ===== Section activation + nav highlight =====
+(function () {
+  const sections = Array.from(document.querySelectorAll('main .section'));
+  const navLinks = Array.from(document.querySelectorAll('.nav a[href^="#"]'));
+  if (!sections.length || !navLinks.length) return;
+
+  const linkForId = new Map();
+  navLinks.forEach((link) => {
+    const id = link.getAttribute('href');
+    if (id) linkForId.set(id.replace('#', ''), link);
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.id;
+        if (!id) return;
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add('section-active');
+
+          navLinks.forEach((l) => l.classList.remove('is-active'));
+          const match = linkForId.get(id);
+          if (match) match.classList.add('is-active');
+        }
+      });
+    },
+    {
+      root: document.querySelector('.page-stack'),
+      threshold: 0.6
+    }
+  );
+
+  sections.forEach((sec) => observer.observe(sec));
+})();
+
+// ===== Carrier modal and steps =====
 (function () {
   const openBtn = document.getElementById('carrierSetupBtn');
   const modal = document.getElementById('carrierModal');
@@ -139,7 +180,6 @@ if (yearEl) {
         e.preventDefault();
         form.reportValidity();
       }
-      // if valid, browser opens email draft via mailto
     });
   }
 })();
