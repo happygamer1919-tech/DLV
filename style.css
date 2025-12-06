@@ -26,14 +26,7 @@ body {
   color: var(--text);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Inter", sans-serif;
-}
-
-html {
   scroll-behavior: smooth;
-}
-
-main {
-  scroll-snap-type: y mandatory;
 }
 
 /* Layout helpers */
@@ -44,12 +37,16 @@ main {
 
 .section {
   position: relative;
-  padding: 96px 0;
+  padding: 110px 0 80px;
   z-index: 1;
   min-height: 100vh;
   scroll-snap-align: start;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+}
+
+main {
+  scroll-snap-type: y mandatory;
 }
 
 .section-alt {
@@ -67,13 +64,13 @@ main {
   margin: 0 0 24px;
 }
 
-/* Content animation wrapper */
+/* Content animation */
 .section-content {
   position: relative;
   z-index: 1;
-  transform: translateY(32px);
+  transform: translateY(26px);
   opacity: 0;
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  transition: opacity 0.85s ease, transform 0.85s ease;
 }
 
 .section-active .section-content {
@@ -182,7 +179,7 @@ main {
   align-items: center;
 }
 
-/* Neon DLV tag in nav */
+/* Neon DLV tag */
 .neon-dlv-tag {
   display: inline-flex;
   align-items: center;
@@ -202,14 +199,13 @@ main {
 
 /* Hero */
 .hero {
-  padding-top: 120px;
+  padding-top: 130px;
 }
 
 .hero-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 32px;
-  align-items: center;
 }
 
 .hero-main h1 {
@@ -227,6 +223,23 @@ main {
   display: flex;
   gap: 14px;
   margin-bottom: 16px;
+}
+
+/* Hero emblem */
+.hero-emblem {
+  position: absolute;
+  top: 120px;
+  right: 8%;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgba(0, 255, 158, 0.32), transparent 60%),
+    radial-gradient(circle at center, rgba(0, 0, 0, 0.9), #020814);
+  box-shadow:
+    0 0 40px rgba(0, 255, 158, 0.5),
+    0 0 120px rgba(0, 255, 158, 0.25);
+  opacity: 0.18;
 }
 
 /* Graffiti DLV word */
@@ -321,6 +334,32 @@ main {
     rgba(113, 255, 188, 0.18),
     transparent
   );
+}
+
+/* Hero info cards */
+.hero-info-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.hero-info-card {
+  background: rgba(5, 16, 34, 0.96);
+  border-radius: 12px;
+  border: 1px solid rgba(101, 140, 210, 0.45);
+  padding: 10px 12px;
+}
+
+.hero-info-card h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.hero-info-card p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
 }
 
 /* Hero right cards */
@@ -678,7 +717,7 @@ main {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at right, rgba(0, 255, 158, 0.18), transparent 55%),
+    radial-gradient(circle at 82% 75%, rgba(0, 255, 158, 0.25), transparent 60%),
     linear-gradient(to right, #020814 0, transparent 55%);
   pointer-events: none;
   z-index: -2;
@@ -687,9 +726,9 @@ main {
 .section-truck {
   position: absolute;
   inset: 0;
-  background-position: right center;
   background-repeat: no-repeat;
-  background-size: auto 90%;
+  background-size: auto 75%;
+  background-position: 85% 76%; /* slightly angled into frame, lower-right */
   opacity: 0;
   transform: translateX(40px);
   transition: opacity 0.85s ease, transform 0.85s ease;
@@ -698,73 +737,79 @@ main {
   z-index: -1;
 }
 
-/* Plug your actual images here */
+/* Correct asset paths (.png) */
 .truck-dryvan .section-truck {
-  background-image: url("assets/DryVan.jpg");
+  background-image: url("assets/DryVan.png");
 }
 
 .truck-reefer .section-truck {
-  background-image: url("assets/Reefer.jpg");
+  background-image: url("assets/Reefer.png");
 }
 
 .truck-flatbed .section-truck {
-  background-image: url("assets/Flatbed.jpg");
+  background-image: url("assets/Flatbed.png");
 }
 
 .truck-stepdeck .section-truck {
-  background-image: url("assets/StepDeck.jpg");
+  background-image: url("assets/StepDeck.png");
 }
 
 .truck-straight .section-truck {
-  background-image: url("assets/StraightTruck.jpg");
+  background-image: url("assets/StraightTruck.png");
 }
 
 .truck-ponly .section-truck {
-  background-image: url("assets/POnly.jpg");
+  background-image: url("assets/POnly.png");
 }
 
 /* When section is active, truck fades from shadows */
 .section-active .section-truck {
-  opacity: 1;
+  opacity: 0.85;
   transform: translateX(0);
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .hero-layout {
     grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 120px;
   }
 
   .hero-aside {
     order: -1;
   }
 
+  .hero-emblem {
+    display: none;
+  }
+
+  .hero-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
   .quote-layout {
     grid-template-columns: 1fr;
   }
 
   .section-truck {
-    background-size: auto 70%;
-    opacity: 0.16;
+    background-size: auto 65%;
+    opacity: 0.2;
     transform: translateX(0);
   }
 
   .section-active .section-truck {
-    opacity: 0.3;
+    opacity: 0.35;
   }
 }
 
 @media (max-width: 720px) {
   .nav ul {
     display: none;
-  }
-
-  .hero {
-    padding-top: 90px;
-  }
-
-  .hero-tags {
-    flex-wrap: wrap;
   }
 
   .tiles,
@@ -775,5 +820,9 @@ main {
   .modal-dialog {
     padding: 22px 18px 14px;
     max-height: calc(100% - 24px);
+  }
+
+  .section {
+    padding-top: 96px;
   }
 }
