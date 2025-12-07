@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>DLV Logistics | Your business in motion</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DLV Logistics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,20 +11,20 @@
   <header class="site-header">
     <div class="wrap nav-wrap">
       <a href="#hero" class="brand">
-        <img src="assets/DLV_logo.jpg" alt="DLV Logistics logo" class="brand-logo" />
-        <span class="brand-text">
+        <img src="assets/DLV_logo.jpg" alt="DLV Logistics" class="brand-logo" />
+        <div class="brand-text">
           <span class="brand-main">DLV LOGISTICS</span>
-        </span>
+        </div>
       </a>
 
       <nav class="nav">
         <ul>
-          <li><a href="#who">Who we serve</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#why">Why DLV</a></li>
-          <li><a href="#quote">Get a quote</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#carriers">Carriers</a></li>
+          <li><a href="#who" class="nav-link">Who we serve</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#why" class="nav-link">Why DLV</a></li>
+          <li><a href="#quote" class="nav-link">Get a quote</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="#carriers" class="nav-link">Carriers</a></li>
         </ul>
       </nav>
 
@@ -34,49 +34,67 @@
     </div>
   </header>
 
-  <!-- ===== Main: full-height sections ===== -->
   <main>
-    <!-- Hero = page 1 -->
-    <section id="hero" class="page-section hero">
-      <div class="wrap hero-layout">
+    <!-- ===== HERO / INTRO ===== -->
+    <section class="page-section section hero section--hero" id="hero">
+      <div class="wrap section-inner hero-layout">
+        <!-- Left hero -->
         <div class="hero-main">
-          <p class="dlv-graffiti" aria-hidden="true">DLV</p>
+          <span class="dlv-graffiti">DLV</span>
 
           <h1>Your business in motion</h1>
 
           <p class="hero-sub">
-            We move the freight that keeps your business alive, from daily lanes
-            to once in a lifetime moves. DLV Logistics handles cross border,
-            heavy haul, time critical, and regulated shipments with one focus:
-            safe delivery, clear communication, and no surprises.
+            We move the freight that keeps your business alive, from daily lanes to once in
+            a lifetime moves. DLV Logistics handles cross border, heavy haul, time critical,
+            and regulated shipments with one focus: safe delivery, clear communication,
+            and no surprises.
           </p>
 
           <div class="hero-actions">
             <a href="#quote" class="btn-primary">Request a quote</a>
+            <a href="#who" class="btn-outline">Who we work with</a>
           </div>
 
           <div class="hero-tags">
-            <span class="tag tag-strong">Canada and the US cross border</span>
-            <span class="tag tag-strong">Heavy and over dimensional</span>
-            <span class="tag tag-strong">High value and regulated freight</span>
+            <span class="tag tag-strong">Canada &amp; US cross border</span>
+            <span class="tag">Heavy and over dimensional</span>
+            <span class="tag">High value &amp; regulated freight</span>
           </div>
 
           <div class="hero-pill-row">
-            <article class="hero-pill">
+            <div class="hero-pill">
               <h3>Cross border focus</h3>
               <p>Daily work on Canada / US lanes with customs and brokers on both sides.</p>
-            </article>
-            <article class="hero-pill">
+            </div>
+            <div class="hero-pill">
               <h3>Built for heavy</h3>
               <p>Deck, step deck, multi-axle, and project freight planned around your sites.</p>
-            </article>
-            <article class="hero-pill">
+            </div>
+            <div class="hero-pill">
               <h3>High value ready</h3>
               <p>Controlled carriers, documented checks, and clear updates from load to POD.</p>
-            </article>
+            </div>
+          </div>
+
+          <!-- NEW: hero micro cards strip -->
+          <div class="hero-micro-strip">
+            <div class="hero-micro-card">
+              <h4>North American coverage</h4>
+              <p>Daily freight across Canada and the US with cross-border customs support on both sides.</p>
+            </div>
+            <div class="hero-micro-card">
+              <h4>Mode + equipment matching</h4>
+              <p>Dry van, reefer, flatbed, step deck, and straight truck capacity matched to the job.</p>
+            </div>
+            <div class="hero-micro-card">
+              <h4>Control tower visibility</h4>
+              <p>Check-calls, exception alerts, and POD follow-through so teams are never guessing.</p>
+            </div>
           </div>
         </div>
 
+        <!-- Right hero aside -->
         <aside class="hero-aside">
           <div class="stat-card">
             <p class="label">On time performance</p>
@@ -87,7 +105,7 @@
           <div class="stat-card">
             <p class="label">Primary corridors</p>
             <ul class="corridors">
-              <li>BC &lt;-&gt; AB &lt;-&gt; SK &lt;-&gt; MB &lt;-&gt; ON &lt;-&gt; QC &lt;-&gt; NL &lt;-&gt; NS &lt;-&gt; NB</li>
+              <li>BC &lt;&gt; AB &lt;&gt; SK &lt;&gt; MB &lt;&gt; ON &lt;&gt; QC &lt;&gt; NL &lt;&gt; NS &lt;&gt; NB</li>
               <li>Canada and the US cross border</li>
               <li>48 state coverage in the US</li>
             </ul>
@@ -96,9 +114,9 @@
       </div>
     </section>
 
-    <!-- Who we serve = page 2 (Dry van) -->
-    <section id="who" class="page-section section section--who">
-      <div class="truck-bg truck-bg--dryvan"></div>
+    <!-- ===== WHO WE SERVE ===== -->
+    <section class="page-section section section--who" id="who">
+      <div class="truck-bg"></div>
 
       <div class="wrap section-inner">
         <h2>Who we serve</h2>
@@ -112,9 +130,9 @@
           <article class="tile">
             <h3>Shippers</h3>
             <p>
-              Project freight, regular lanes, one off emergencies. We work with
-              manufacturers, distributors, and project owners who need a team
-              that stays close to the freight and the details.
+              Project freight, regular lanes, one off emergencies. We work with manufacturers,
+              distributors, and project owners who need a team that stays close to the freight
+              and the details.
             </p>
             <ul class="bullets">
               <li>Construction materials, steel, machinery</li>
@@ -126,9 +144,9 @@
           <article class="tile">
             <h3>Agents and brokers</h3>
             <p>
-              Need a partner that can help with heavy, sensitive, or cross border
-              moves. We support existing books of business and project work with
-              the same care we give our direct clients.
+              Need a partner that can help with heavy, sensitive, or cross border moves.
+              We support existing books of business and project work with the same care
+              we give our direct clients.
             </p>
             <ul class="bullets">
               <li>Support on complex Canada and the US lanes</li>
@@ -137,178 +155,255 @@
             </ul>
           </article>
         </div>
+
+        <!-- NEW: extra bottom content -->
+        <div class="who-extra-wrap">
+          <div class="who-extra-card">
+            <h4>Industries we move most</h4>
+            <ul>
+              <li>Construction materials, steel, and heavy components</li>
+              <li>Retail, e-commerce, and store replenishment</li>
+              <li>Food &amp; beverage and packaging materials</li>
+              <li>Project freight for plants, mines, and job sites</li>
+            </ul>
+          </div>
+
+          <div class="who-extra-card">
+            <h4>Move types</h4>
+            <ul>
+              <li>Spot quotes for urgent moves and one-off projects</li>
+              <li>Weekly contract lanes with agreed service KPIs</li>
+              <li>Seasonal surge and overflow support for busy peaks</li>
+              <li>Dedicated capacity for high-touch or sensitive freight</li>
+            </ul>
+          </div>
+
+          <div class="who-extra-card">
+            <h4>How we plug into your team</h4>
+            <ul>
+              <li>Single point of contact for operations and pricing</li>
+              <li>Pre-planned appointment scheduling with sites</li>
+              <li>Proactive updates when anything changes on the road</li>
+              <li>Post-delivery recap and documentation in one place</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Services = page 3 (Reefer) -->
-    <section id="services" class="page-section section section-alt section--services">
-      <div class="truck-bg truck-bg--reefer"></div>
+    <!-- ===== SERVICES ===== -->
+    <section class="page-section section section--services" id="services">
+      <div class="truck-bg"></div>
 
       <div class="wrap section-inner">
         <h2>Services</h2>
         <p class="section-intro">
-          From standard truckload to engineered heavy haul, DLV builds the move
-          around the cargo and the risk, not the other way around.
+          From standard truckload to engineered heavy haul, DLV builds the move around the
+          cargo and the risk, not the other way around.
         </p>
 
         <div class="service-grid">
           <article class="service">
             <h3>Truckload and LTL</h3>
             <p>
-              Dry van, reefer, deck, and more across Canada and the United
-              States. Regular lanes or last minute solves, covered with live
-              updates and no guesswork.
+              Dry van, reefer, deck, and more across Canada and the United States.
+              Regular lanes or last minute solves, covered with live updates and no guesswork.
             </p>
           </article>
 
           <article class="service">
             <h3>Heavy haul and projects</h3>
             <p>
-              Oversize and overweight freight with permits, escorts, and route
-              checks built in. We coordinate with plants, yards, and job sites
-              so everyone is ready when the unit arrives.
+              Oversize and overweight freight with permits, escorts, and route checks built in.
+              We coordinate with plants, yards, and job sites so everyone is ready when the unit arrives.
             </p>
           </article>
 
           <article class="service">
             <h3>High value and regulated</h3>
             <p>
-              Sensitive cargo that needs the right carriers and tight process.
-              Temperature control, secure freight, and regulated commodities
-              handled with documented steps and clear communication.
+              Sensitive cargo that needs the right carriers and tight process. Temperature control,
+              secure freight, and regulated commodities handled with documented steps and clear communication.
             </p>
           </article>
 
           <article class="service">
             <h3>Cross border Canada and the US</h3>
             <p>
-              Daily experience with customs, paperwork, and brokers on both
-              sides. We keep everyone aligned so border crossings are planned,
-              not guessed.
+              Daily experience with customs, paperwork, and brokers on both sides.
+              We keep everyone aligned so border crossings are planned, not guessed.
             </p>
           </article>
+        </div>
+
+        <!-- NEW: equipment badges -->
+        <div class="service-badges-row">
+          <div class="service-badge">
+            <span class="service-badge-label">Dry van</span>
+            <p>53’ vans for general freight, palletized goods, and protected dry product.</p>
+          </div>
+          <div class="service-badge">
+            <span class="service-badge-label">Reefer</span>
+            <p>Temperature-controlled capacity with continuous monitoring and seals when required.</p>
+          </div>
+          <div class="service-badge">
+            <span class="service-badge-label">Flatbed &amp; step deck</span>
+            <p>Open-deck moves with tarps, chains, dunnage, and escort coordination when needed.</p>
+          </div>
+          <div class="service-badge">
+            <span class="service-badge-label">Straight truck &amp; hotshot</span>
+            <p>Time-critical city deliveries, job-site drops, and dock-restricted locations.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Why DLV = page 4 (Flatbed) -->
-    <section id="why" class="page-section section section--why">
-      <div class="truck-bg truck-bg--flatbed"></div>
+    <!-- ===== WHY DLV ===== -->
+    <section class="page-section section section--why" id="why">
+      <div class="truck-bg"></div>
 
       <div class="wrap section-inner">
         <h2>Why DLV</h2>
         <p class="section-intro">
-          Freight is messy. Our job is to carry the stress so you can focus on
-          the work that matters most.
+          Freight is messy. Our job is to carry the stress so you can focus on the work that matters most.
         </p>
 
         <div class="tiles">
           <article class="tile">
             <h3>People in the details</h3>
             <p>
-              A team that lives in the details, from the first quote to the last
-              proof of delivery. We track loads, call ahead, and keep you in the
-              loop so problems are seen early and solved fast.
+              A team that lives in the details, from the first quote to the last proof of delivery.
+              We track loads, call ahead, and keep you in the loop so problems are seen early and solved fast.
             </p>
           </article>
 
           <article class="tile">
             <h3>Clarity over noise</h3>
             <p>
-              Fast, honest answers. If something changes, you know exactly what
-              is happening, what it means, and what we are doing about it.
+              Fast, honest answers. If something changes, you know exactly what is happening, what it means,
+              and what we are doing about it.
             </p>
           </article>
 
           <article class="tile">
             <h3>Built for complex freight</h3>
             <p>
-              Heavy, long, tall, sensitive, and regulated freight is where we
-              spend our time. That experience shows up in better planning,
-              safer moves, and smoother days for your team.
+              Heavy, long, tall, sensitive, and regulated freight is where we spend our time.
+              That experience shows up in better planning, safer moves, and smoother days for your team.
             </p>
           </article>
+        </div>
+
+        <!-- NEW: process steps -->
+        <div class="why-steps">
+          <div class="why-step">
+            <span class="why-step-tag">01 • Discover</span>
+            <p>We map your lanes, constraints, sites, and pain points instead of just asking for “a rate”.</p>
+          </div>
+          <div class="why-step">
+            <span class="why-step-tag">02 • Design</span>
+            <p>We propose routing, equipment, and service windows that actually work for your network.</p>
+          </div>
+          <div class="why-step">
+            <span class="why-step-tag">03 • Deliver</span>
+            <p>We execute, monitor exceptions, and refine lane by lane with live feedback from your team.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Get a quote = page 5 (Step deck) -->
-    <section id="quote" class="page-section section section-alt section--quote">
-      <div class="truck-bg truck-bg--stepdeck"></div>
+    <!-- ===== GET A QUOTE ===== -->
+    <section class="page-section section section--quote" id="quote">
+      <div class="truck-bg"></div>
 
-      <div class="wrap quote-layout section-inner">
+      <div class="wrap section-inner quote-layout">
         <div class="quote-copy">
           <h2>Request a quote</h2>
           <p>
-            Share the basics and we will respond with a clear plan, pricing, and
-            any questions that matter before trucks start moving.
+            Share the basics and we will respond with a clear plan, pricing, and any questions that matter
+            before trucks start moving.
           </p>
+
+          <!-- NEW: hints -->
+          <div class="quote-hints">
+            <h4>Helpful details to include</h4>
+            <ul>
+              <li>Pickup &amp; delivery cities, postal codes, and any site restrictions.</li>
+              <li>Commodity, packaging type, weight, and dimensions or pallet count.</li>
+              <li>Required appointment windows and any time-critical deadlines.</li>
+              <li>Special handling: temperature, tarping, driver assist, or returns.</li>
+            </ul>
+            <p class="quote-hints-note">
+              Send what you have — we’ll clean it up, spot gaps, and come back with a clear plan and pricing.
+            </p>
+          </div>
         </div>
 
         <form
-          id="quoteForm"
           class="quote-form"
-          action="mailto:info@dlvlogistics.com?subject=New%20quote%20request%20from%20DLV%20website"
-          method="POST"
+          action="mailto:info@dlvlogistics.com"
+          method="post"
           enctype="text/plain"
         >
           <div class="field-row">
             <label>
               Name
-              <input name="Name" required />
+              <input type="text" name="name" required />
             </label>
             <label>
               Company
-              <input name="Company" />
+              <input type="text" name="company" />
             </label>
           </div>
 
           <div class="field-row">
             <label>
               Email
-              <input type="email" name="Email" required />
+              <input type="email" name="email" required />
             </label>
             <label>
               Phone
-              <input type="tel" name="Phone" />
+              <input type="tel" name="phone" />
             </label>
           </div>
 
           <div class="field-row">
             <label>
               Origin city, state or province
-              <input name="Origin" required />
+              <input type="text" name="origin" />
             </label>
             <label>
               Destination city, state or province
-              <input name="Destination" required />
+              <input type="text" name="destination" />
             </label>
           </div>
 
           <div class="field-row">
             <label>
               Cargo description
-              <input name="Cargo description" />
+              <input type="text" name="cargo" />
             </label>
             <label>
               Equipment or service needed
-              <input name="Equipment or service" />
+              <input type="text" name="equipment" />
             </label>
           </div>
 
-          <label class="field-full">
-            Timing and notes
-            <textarea name="Timing and notes" rows="3"></textarea>
-          </label>
+          <div class="field-full">
+            <label>
+              Timing and notes
+              <textarea name="notes" rows="3"></textarea>
+            </label>
+          </div>
 
           <button type="submit" class="btn-primary">Send details</button>
         </form>
       </div>
     </section>
 
-    <!-- Contact = page 6 (Straight truck) -->
-    <section id="contact" class="page-section section section--contact">
-      <div class="truck-bg truck-bg--straight"></div>
+    <!-- ===== CONTACT ===== -->
+    <section class="page-section section section--contact" id="contact">
+      <div class="truck-bg"></div>
 
       <div class="wrap section-inner contact-layout">
         <div class="contact-card">
@@ -317,209 +412,167 @@
 
           <ul class="contact-list">
             <li><strong>Email:</strong> <a href="mailto:info@dlvlogistics.com">info@dlvlogistics.com</a></li>
-            <li><strong>Office:</strong> <a href="tel:12267020542">226 702 0542</a></li>
-            <li>
-              <strong>Address:</strong>
-              422 Richards Street, Vancouver BC, V6B 2Z4
-            </li>
+            <li><strong>Office:</strong> <a href="tel:2367020542">236 702 0542</a></li>
+            <li><strong>Address:</strong> 422 Richards Street, Vancouver BC, V6B 2Z4</li>
           </ul>
+
+          <!-- NEW: meta grid -->
+          <div class="contact-meta">
+            <div>
+              <h4>Response time</h4>
+              <p>Most quote requests answered same business day, urgent loads within 30–60 minutes.</p>
+            </div>
+            <div>
+              <h4>Operating hours</h4>
+              <p>Core team: 07:00–18:00 PT • After-hours support for active loads as needed.</p>
+            </div>
+            <div>
+              <h4>Regions served</h4>
+              <p>Canada-wide, cross-border US, and project freight into major North American hubs.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Carriers = page 7 (Power only) -->
-    <section id="carriers" class="page-section section section-alt section--carriers">
-      <div class="truck-bg truck-bg--ponly"></div>
+    <!-- ===== CARRIERS ===== -->
+    <section class="page-section section section--carriers" id="carriers">
+      <div class="truck-bg"></div>
 
       <div class="wrap section-inner carriers">
+        <h2>Carriers</h2>
         <div class="carriers-copy">
-          <h2>Carriers</h2>
           <p>
-            We work with reliable carriers who care about service and safety as
-            much as we do. Join our network and work with a team that treats you
-            like a partner, not a line on a load board.
+            We work with reliable carriers who care about service and safety as much as we do.
+            Join our network and work with a team that treats you like a partner, not a line on a load board.
           </p>
-          <button class="btn-outline" id="carrierSetupBtn">
-            Begin carrier set up
-          </button>
+        </div>
+
+        <button class="btn-outline" id="openCarrierModalBtn">
+          Begin carrier set up
+        </button>
+
+        <!-- NEW: carrier benefits/requirements grid -->
+        <div class="carrier-grid">
+          <div class="carrier-col">
+            <h4>What carriers get</h4>
+            <ul>
+              <li>Consistent freight on preferred lanes and regions.</li>
+              <li>Clear pickup instructions and on-time loading appointments.</li>
+              <li>Fast paperwork and no-surprise changes at the dock.</li>
+              <li>Access to specialized freight when you have the right gear.</li>
+            </ul>
+          </div>
+          <div class="carrier-col">
+            <h4>What we look for</h4>
+            <ul>
+              <li>Active authority and insurance in good standing.</li>
+              <li>Professional drivers with strong communication.</li>
+              <li>GPS or check-call availability while under load.</li>
+              <li>Detail-oriented paperwork and on-time performance.</li>
+            </ul>
+          </div>
+          <div class="carrier-col">
+            <h4>Equipment in demand</h4>
+            <ul>
+              <li>53’ dry vans and reefers (Canada &amp; US).</li>
+              <li>Flatbeds, step decks, and multi-axle open deck.</li>
+              <li>Straight trucks for city and job-site work.</li>
+              <li>Power only for trailer pools and repositioning.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carrier modal (unchanged logic, just markup) -->
+      <div class="modal" id="carrierModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-dialog">
+          <button class="modal-close" id="closeCarrierModalBtn">&times;</button>
+          <h2>Carrier set up</h2>
+          <p class="modal-intro">
+            A quick three-step form so we can review your profile and match you with the right freight.
+          </p>
+          <p class="modal-note">
+            Once submitted, the details are sent to <strong>info@dlvlogistics.com</strong> and our team will follow up.
+          </p>
+
+          <form
+            id="carrierForm"
+            class="carrier-form"
+            action="mailto:info@dlvlogistics.com"
+            method="post"
+            enctype="text/plain"
+          >
+            <!-- Step 1 -->
+            <div class="carrier-step is-active" data-step="1">
+              <h3>Company details</h3>
+              <div class="field-grid">
+                <label>
+                  Legal company name
+                  <input type="text" name="company_name" required />
+                </label>
+                <label>
+                  MC / DOT or NSC
+                  <input type="text" name="authority" />
+                </label>
+                <label>
+                  Phone
+                  <input type="tel" name="carrier_phone" />
+                </label>
+                <label>
+                  Email
+                  <input type="email" name="carrier_email" />
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="carrier-step" data-step="2">
+              <h3>Operations &amp; equipment</h3>
+              <div class="field-grid">
+                <label>
+                  Home base (city / province or state)
+                  <input type="text" name="home_base" />
+                </label>
+                <label>
+                  Regions you run most
+                  <input type="text" name="regions" />
+                </label>
+                <label>
+                  Equipment (van, reefer, deck, etc.)
+                  <input type="text" name="equipment_types" />
+                </label>
+                <label>
+                  Fleet size
+                  <input type="number" name="fleet_size" min="1" />
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="carrier-step" data-step="3">
+              <h3>Notes &amp; documents</h3>
+              <h4>Anything we should know</h4>
+              <textarea name="carrier_notes" rows="4"></textarea>
+            </div>
+
+            <div class="carrier-step-nav">
+              <button type="button" class="btn-outline" id="carrierPrevBtn">Back</button>
+              <button type="button" class="btn-outline" id="carrierNextBtn">Next</button>
+              <button type="submit" class="btn-primary" id="carrierSubmitBtn">Submit</button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ===== Footer ===== -->
   <footer class="site-footer">
     <div class="wrap footer-layout">
-      <span>© <span id="year"></span> DLV Logistics. All rights reserved.</span>
+      &copy; <span id="year"></span> DLV Logistics. All rights reserved.
     </div>
   </footer>
-
-  <!-- ===== Carrier Application Modal ===== -->
-  <div id="carrierModal" class="modal" aria-hidden="true">
-    <div class="modal-backdrop" data-modal-close></div>
-
-    <div class="modal-dialog">
-      <button class="modal-close" type="button" aria-label="Close" data-modal-close>
-        &times;
-      </button>
-
-      <h2>Carrier application</h2>
-      <p class="modal-intro">
-        Thank you for your interest in working with DLV Logistics.
-        Please complete the form below. Your answers will be included in an
-        email draft to our team. Attach your certificates and documents in your
-        email client before sending.
-      </p>
-
-      <form
-        id="carrierForm"
-        class="carrier-form"
-        action="mailto:info@dlvlogistics.com?subject=New%20carrier%20application%20from%20DLV%20website"
-        method="POST"
-        enctype="text/plain"
-      >
-        <!-- Step 1 -->
-        <div class="carrier-step is-active" data-step="1">
-          <h3>Company information</h3>
-
-          <div class="field-grid">
-            <label>
-              Legal company name
-              <input name="Company legal name" required />
-            </label>
-            <label>
-              DBA (if different)
-              <input name="DBA" />
-            </label>
-            <label>
-              MC #
-              <input name="MC number" required />
-            </label>
-            <label>
-              DOT #
-              <input name="DOT number" required />
-            </label>
-            <label>
-              Contact name
-              <input name="Contact name" required />
-            </label>
-            <label>
-              Contact phone
-              <input name="Contact phone" type="tel" required />
-            </label>
-            <label>
-              Contact email
-              <input name="Contact email" type="email" required />
-            </label>
-            <label>
-              Company address
-              <input name="Company address" required />
-            </label>
-          </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="carrier-step" data-step="2">
-          <h3>Insurance details</h3>
-
-          <h4>Liability insurance</h4>
-          <div class="field-grid">
-            <label>
-              Company
-              <input name="Liability insurance company" />
-            </label>
-            <label>
-              Policy #
-              <input name="Liability policy number" />
-            </label>
-            <label>
-              Expiry date
-              <input name="Liability expiry date" type="date" />
-            </label>
-          </div>
-
-          <h4>Auto insurance</h4>
-          <div class="field-grid">
-            <label>
-              Company
-              <input name="Auto insurance company" />
-            </label>
-            <label>
-              Policy #
-              <input name="Auto policy number" />
-            </label>
-            <label>
-              Expiry date
-              <input name="Auto expiry date" type="date" />
-            </label>
-          </div>
-
-          <h4>Cargo insurance</h4>
-          <div class="field-grid">
-            <label>
-              Company
-              <input name="Cargo insurance company" />
-            </label>
-            <label>
-              Policy #
-              <input name="Cargo policy number" />
-            </label>
-            <label>
-              Expiry date
-              <input name="Cargo expiry date" type="date" />
-            </label>
-          </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="carrier-step" data-step="3">
-          <h3>Documents and notes</h3>
-
-          <p class="modal-note">
-            Use the fields below to tell us what you are sending. When your mail
-            client opens, attach your certificate of insurance, W 9, operating
-            authority, and any other required files before sending.
-          </p>
-
-          <div class="field-grid">
-            <label>
-              Certificate of insurance file name
-              <input name="Certificate of insurance file" />
-            </label>
-            <label>
-              W 9 file name
-              <input name="W9 file" />
-            </label>
-            <label>
-              Operating authority file name
-              <input name="Operating authority file" />
-            </label>
-            <label>
-              All docs in one file (if used)
-              <input name="All docs file" />
-            </label>
-          </div>
-
-          <label class="field-full">
-            Notes
-            <textarea name="Carrier notes" rows="3"></textarea>
-          </label>
-        </div>
-
-        <div class="carrier-step-nav">
-          <button type="button" class="btn-outline" id="carrierPrevBtn">
-            Back
-          </button>
-          <button type="button" class="btn-primary" id="carrierNextBtn">
-            Next
-          </button>
-          <button type="submit" class="btn-primary" id="carrierSubmitBtn">
-            Open email draft
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
