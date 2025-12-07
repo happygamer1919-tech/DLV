@@ -27,6 +27,11 @@ body {
     "Inter", sans-serif;
 }
 
+/* Optional scroll snapping – if your JS already handles scroll, this can stay */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Layout helpers */
 .wrap {
   width: min(1120px, 100% - 32px);
@@ -131,7 +136,7 @@ body {
 /* ===== Full-page section layout ===== */
 .page-section {
   position: relative;
-  min-height: calc(100vh - 64px); /* minus header height */
+  min-height: calc(100vh - 64px); /* minus header */
   padding-top: 80px;
   padding-bottom: 72px;
   overflow: hidden;
@@ -139,15 +144,33 @@ body {
   align-items: flex-start;
 }
 
+/* soft fade between sections */
+.page-section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -24px;
+  height: 48px;
+  background: linear-gradient(to bottom, #020814, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .section-inner {
   position: relative;
   z-index: 2;
 }
 
-/* ensure content always above truck + fade */
-.page-section .wrap {
-  position: relative;
-  z-index: 2;
+.section h2 {
+  font-size: clamp(24px, 2.2vw, 30px);
+  margin: 0 0 12px;
+}
+
+.section-intro {
+  max-width: 620px;
+  color: var(--muted);
+  margin: 0 0 24px;
 }
 
 /* Hero */
@@ -159,7 +182,7 @@ body {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 32px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .hero-main h1 {
@@ -293,6 +316,33 @@ body {
   color: var(--muted);
 }
 
+/* NEW: hero micro strip */
+.hero-micro-strip {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.hero-micro-card {
+  border-radius: 14px;
+  padding: 12px 14px 10px;
+  background: rgba(4, 14, 30, 0.96);
+  border: 1px solid rgba(96, 140, 215, 0.55);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
+}
+
+.hero-micro-card h4 {
+  margin: 0 0 4px;
+  font-size: 13px;
+}
+
+.hero-micro-card p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
 /* Hero right cards */
 .hero-aside {
   display: flex;
@@ -335,22 +385,6 @@ body {
   font-size: 12px;
 }
 
-/* Sections shared */
-.section h2 {
-  font-size: clamp(24px, 2.2vw, 30px);
-  margin: 0 0 12px;
-}
-
-.section-intro {
-  max-width: 620px;
-  color: var(--muted);
-  margin: 0 0 24px;
-}
-
-.section-alt {
-  background: radial-gradient(circle at top, #06142a 0, #040a16 65%);
-}
-
 /* Cards / tiles */
 .tiles {
   display: grid;
@@ -387,6 +421,38 @@ body {
   margin-bottom: 4px;
 }
 
+/* Who – extra bottom content */
+.who-extra-wrap {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.who-extra-card {
+  padding: 16px 16px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(4, 14, 30, 0.98);
+  border: 1px solid rgba(96, 140, 215, 0.55);
+  box-shadow: var(--shadow);
+}
+
+.who-extra-card h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.who-extra-card ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.who-extra-card li {
+  margin-bottom: 4px;
+}
+
 /* Service grid */
 .service-grid {
   display: grid;
@@ -409,6 +475,38 @@ body {
 
 .service p {
   margin: 0;
+  color: var(--muted);
+}
+
+/* Services – equipment badges strip */
+.service-badges-row {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+}
+
+.service-badge {
+  padding: 12px 14px 10px;
+  border-radius: 999px;
+  background: radial-gradient(circle at top, rgba(9, 33, 68, 0.9), rgba(3, 12, 28, 0.98));
+  border: 1px solid rgba(113, 255, 188, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+}
+
+.service-badge-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.service-badge p {
+  margin: 0;
+  font-size: 11px;
   color: var(--muted);
 }
 
@@ -468,6 +566,38 @@ body {
   resize: vertical;
 }
 
+/* Quote – guidance block */
+.quote-hints {
+  margin-top: 18px;
+  padding: 12px 14px 10px;
+  border-radius: var(--radius-md);
+  background: rgba(4, 14, 30, 0.98);
+  border: 1px solid rgba(96, 140, 215, 0.55);
+  box-shadow: var(--shadow);
+}
+
+.quote-hints h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.quote-hints ul {
+  margin: 0 0 6px;
+  padding-left: 18px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.quote-hints li {
+  margin-bottom: 3px;
+}
+
+.quote-hints-note {
+  margin: 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+
 /* Carriers section */
 .carriers {
   max-width: 720px;
@@ -476,6 +606,35 @@ body {
 .carriers-copy p {
   color: var(--muted);
   max-width: 540px;
+}
+
+/* Carriers – bottom grid */
+.carrier-grid {
+  margin-top: 22px;
+  padding: 14px 16px 12px;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at top, rgba(6, 20, 42, 0.98), rgba(3, 10, 26, 0.98));
+  border: 1px solid rgba(96, 140, 215, 0.55);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  font-size: 12px;
+}
+
+.carrier-col h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.carrier-col ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.carrier-col li {
+  margin-bottom: 3px;
 }
 
 /* Contact */
@@ -502,6 +661,27 @@ body {
   margin-bottom: 6px;
 }
 
+/* Contact – meta */
+.contact-meta {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(52, 78, 135, 0.7);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px 16px;
+  font-size: 12px;
+}
+
+.contact-meta h4 {
+  margin: 0 0 4px;
+  font-size: 13px;
+}
+
+.contact-meta p {
+  margin: 0;
+  color: var(--muted);
+}
+
 /* Footer */
 .site-footer {
   padding: 22px 0 28px;
@@ -513,55 +693,21 @@ body {
   color: var(--muted);
 }
 
-/* ===== Truck background layers (fixed) ===== */
-
-/* Make each truck section a masked container */
-.section--who,
-.section--services,
-.section--why,
-.section--quote,
-.section--contact,
-.section--carriers {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Full-section truck image behind content */
+/* ===== Truck background layers ===== */
 .truck-bg {
   position: absolute;
-  inset: 0;
+  inset: auto 5% 0 5%;
+  height: 70vh;
   background-repeat: no-repeat;
   background-position: center bottom;
-  background-size: cover;
-  opacity: 0.85;
+  background-size: contain;
+  opacity: 0.9;
   pointer-events: none;
-  filter: saturate(1.05) brightness(0.9);
-  z-index: 0;
+  filter: saturate(1.15);
+  mix-blend-mode: screen;
 }
 
-/* Soft fade overlay so edges disappear */
-.section--who::after,
-.section--services::after,
-.section--why::after,
-.section--quote::after,
-.section--contact::after,
-.section--carriers::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(
-      to top,
-      rgba(2, 8, 20, 0.98) 0%,
-      rgba(2, 8, 20, 0.9) 15%,
-      rgba(2, 8, 20, 0.25) 55%,
-      rgba(2, 8, 20, 0.92) 100%
-    );
-  z-index: 1;
-}
-
-/* Assign actual truck images */
+/* Assign actual truck images with radial fade baked into the PNGs */
 .section--who .truck-bg {
   background-image: url("assets/DryVan.png");
 }
@@ -728,10 +874,9 @@ body {
     padding-top: 96px;
   }
 
-  /* soften trucks on smaller screens */
   .truck-bg {
-    opacity: 0.7;
-    background-position: center;
+    inset: auto 0 0 0;
+    height: 56vh;
   }
 }
 
@@ -751,5 +896,9 @@ body {
 
   .modal-dialog {
     padding: 22px 18px 14px;
+  }
+
+  .hero-micro-strip {
+    grid-template-columns: 1fr;
   }
 }
