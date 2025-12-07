@@ -144,6 +144,12 @@ body {
   z-index: 2;
 }
 
+/* ensure content always above truck + fade */
+.page-section .wrap {
+  position: relative;
+  z-index: 2;
+}
+
 /* Hero */
 .hero {
   padding-top: 110px;
@@ -507,60 +513,77 @@ body {
   color: var(--muted);
 }
 
-/* ===== Truck background layers ===== */
+/* ===== Truck background layers (fixed) ===== */
+
+/* Make each truck section a masked container */
+.section--who,
+.section--services,
+.section--why,
+.section--quote,
+.section--contact,
+.section--carriers {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Full-section truck image behind content */
 .truck-bg {
   position: absolute;
-  inset: auto 5% 0 5%;
-  height: 70vh;
+  inset: 0;
   background-repeat: no-repeat;
   background-position: center bottom;
-  background-size: contain;
-  opacity: 0.9;
+  background-size: cover;
+  opacity: 0.85;
   pointer-events: none;
-  filter: saturate(1.15);
-  mix-blend-mode: screen;
-  /* soft fade at edges */
-  background-image:
-    radial-gradient(circle at center, rgba(2, 8, 20, 0) 55%, #020814 100%),
-    none;
-  background-blend-mode: normal, screen;
+  filter: saturate(1.05) brightness(0.9);
+  z-index: 0;
+}
+
+/* Soft fade overlay so edges disappear */
+.section--who::after,
+.section--services::after,
+.section--why::after,
+.section--quote::after,
+.section--contact::after,
+.section--carriers::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top,
+      rgba(2, 8, 20, 0.98) 0%,
+      rgba(2, 8, 20, 0.9) 15%,
+      rgba(2, 8, 20, 0.25) 55%,
+      rgba(2, 8, 20, 0.92) 100%
+    );
+  z-index: 1;
 }
 
 /* Assign actual truck images */
 .section--who .truck-bg {
-  background-image:
-    radial-gradient(circle at center, rgba(2, 8, 20, 0) 55%, #020814 100%),
-    url("assets/DryVan.png");
+  background-image: url("assets/DryVan.png");
 }
 
 .section--services .truck-bg {
-  background-image:
-    radial-gradient(circle at center, rgba(2, 8, 20, 0) 55%, #020814 100%),
-    url("assets/Reefer.png");
+  background-image: url("assets/Reefer.png");
 }
 
 .section--why .truck-bg {
-  background-image:
-    radial-gradient(circle at center, rgba(2, 8, 20, 0) 55%, #020814 100%),
-    url("assets/Flatbed.png");
+  background-image: url("assets/Flatbed.png");
 }
 
 .section--quote .truck-bg {
-  background-image:
-    radial-gradient(circle at center, rgba(2, 8, 20, 0) 55%, #020814 100%),
-    url("assets/StepDeck.png");
+  background-image: url("assets/StepDeck.png");
 }
 
 .section--contact .truck-bg {
-  background-image:
-    radial-gradient(circle at center, rgba(2, 8, 20, 0) 55%, #020814 100%),
-    url("assets/StraightTruck.png");
+  background-image: url("assets/StraightTruck.png");
 }
 
 .section--carriers .truck-bg {
-  background-image:
-    radial-gradient(circle at center, rgba(2, 8, 20, 0) 55%, #020814 100%),
-    url("assets/POnly.png");
+  background-image: url("assets/POnly.png");
 }
 
 /* ===== Modal ===== */
@@ -705,9 +728,10 @@ body {
     padding-top: 96px;
   }
 
+  /* soften trucks on smaller screens */
   .truck-bg {
-    inset: auto 0 0 0;
-    height: 56vh;
+    opacity: 0.7;
+    background-position: center;
   }
 }
 
