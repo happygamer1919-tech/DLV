@@ -32,6 +32,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* full-page snap scrolling */
+body {
+  scroll-snap-type: y mandatory;
+}
+
 /* Layout helpers */
 .wrap {
   width: min(1120px, 100% - 32px);
@@ -142,6 +147,10 @@ html {
   overflow: hidden;
   display: flex;
   align-items: flex-start;
+
+  /* snap to viewport */
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /* remove previous fake “line” between pages by killing gradients */
@@ -446,6 +455,29 @@ html {
 
 .who-extra-card li {
   margin-bottom: 4px;
+}
+
+/* ===== Why DLV – 3-step process block (under main tiles) ===== */
+.why-flow {
+  margin-top: 26px;
+  max-width: 640px;
+  padding: 18px 20px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(5, 16, 34, 0.96);
+  border: 1px solid rgba(101, 140, 210, 0.55);
+  box-shadow: var(--shadow);
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.why-flow-line {
+  margin-bottom: 6px;
+}
+
+.why-flow-line span {
+  font-weight: 600;
+  color: var(--accent);
 }
 
 /* Service grid */
