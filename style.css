@@ -457,10 +457,10 @@ body {
   margin-bottom: 4px;
 }
 /* ===== Why DLV – 3-step process block (under main tiles) ===== */
-.why-flow {
+.why-steps {
   margin-top: 26px;
-  max-width: 640px;
-  padding: 18px 20px 16px;
+  max-width: 640px;                        /* keeps it in the left side, not over the truck */
+  padding: 18px 20px 14px;
   border-radius: var(--radius-md);
   background: rgba(5, 16, 34, 0.96);
   border: 1px solid rgba(101, 140, 210, 0.55);
@@ -470,35 +470,25 @@ body {
   line-height: 1.5;
 }
 
-.why-flow-line {
-  margin-bottom: 6px;
+.why-step {
+  padding-top: 6px;
+  padding-bottom: 4px;
 }
 
-.why-flow-line span {
+.why-step + .why-step {
+  border-top: 1px solid rgba(101, 140, 210, 0.35);   /* subtle separator between 01 / 02 / 03 */
+}
+
+.why-step-tag {
+  display: block;
+  font-size: 12px;
   font-weight: 600;
   color: var(--accent);
-}
-/* ===== Why DLV – 3-step process block (under main tiles) ===== */
-.why-flow {
-  margin-top: 26px;
-  max-width: 640px;
-  padding: 18px 20px 16px;
-  border-radius: var(--radius-md);
-  background: rgba(5, 16, 34, 0.96);
-  border: 1px solid rgba(101, 140, 210, 0.55);
-  box-shadow: var(--shadow);
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.5;
+  margin-bottom: 2px;
 }
 
-.why-flow-line {
-  margin-bottom: 6px;
-}
-
-.why-flow-line span {
-  font-weight: 600;
-  color: var(--accent);
+.why-step p {
+  margin: 0;
 }
 
 /* Service grid */
