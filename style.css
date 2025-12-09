@@ -21,13 +21,13 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at top, #07152b 0, #020814 55%);
+  background: #020814;
   color: var(--text);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Inter", sans-serif;
 }
 
-/* Optional scroll snapping – if your JS already handles scroll, this can stay */
+/* smooth scroll */
 html {
   scroll-behavior: smooth;
 }
@@ -136,25 +136,17 @@ html {
 /* ===== Full-page section layout ===== */
 .page-section {
   position: relative;
-  min-height: calc(100vh - 64px); /* minus header */
-  padding-top: 80px;
-  padding-bottom: 72px;
+  min-height: calc(100vh - 64px); /* minus header height */
+  padding-top: 96px;
+  padding-bottom: 96px;
   overflow: hidden;
   display: flex;
   align-items: flex-start;
 }
 
-/* soft fade between sections */
+/* remove previous fake “line” between pages by killing gradients */
 .page-section::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -24px;
-  height: 48px;
-  background: linear-gradient(to bottom, #020814, transparent);
-  pointer-events: none;
-  z-index: 1;
+  content: none;
 }
 
 .section-inner {
@@ -162,8 +154,9 @@ html {
   z-index: 2;
 }
 
+/* Section headings */
 .section h2 {
-  font-size: clamp(24px, 2.2vw, 30px);
+  font-size: clamp(26px, 2.6vw, 32px);
   margin: 0 0 12px;
 }
 
@@ -173,33 +166,35 @@ html {
   margin: 0 0 24px;
 }
 
-/* Hero */
+/* Hero (page 1) – no background truck, just clean */
 .hero {
   padding-top: 110px;
+  background: radial-gradient(circle at top, #07152b 0, #020814 55%);
 }
 
 .hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: 32px;
   align-items: flex-start;
 }
 
 .hero-main h1 {
-  font-size: clamp(34px, 4vw, 46px);
+  font-size: clamp(38px, 4.4vw, 52px);
   margin: 10px 0 12px;
 }
 
 .hero-sub {
   color: var(--muted);
-  max-width: 560px;
+  max-width: 580px;
   margin: 0 0 22px;
 }
 
 .hero-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 14px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 /* Graffiti DLV word */
@@ -292,9 +287,9 @@ html {
 
 .hero-pill-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 12px;
-  max-width: 640px;
+  max-width: 680px;
 }
 
 .hero-pill {
@@ -693,43 +688,57 @@ html {
   color: var(--muted);
 }
 
-/* ===== Truck background layers ===== */
-.truck-bg {
-  position: absolute;
-  inset: auto 5% 0 5%;
-  height: 70vh;
+/* ===== FULL-BLEED TRUCK BACKGROUNDS ===== */
+
+/* hero already has separate gradient; all other sections get the truck image
+   as the ONLY background, full cover.
+*/
+
+.section--who,
+.section--services,
+.section--why,
+.section--quote,
+.section--contact,
+.section--carriers {
+  background-color: #020814;
   background-repeat: no-repeat;
   background-position: center bottom;
-  background-size: contain;
-  opacity: 0.9;
-  pointer-events: none;
-  filter: saturate(1.15);
-  mix-blend-mode: screen;
+  background-size: cover;
 }
 
-/* Assign actual truck images with radial fade baked into the PNGs */
-.section--who .truck-bg {
+/* assign images */
+.section--who {
   background-image: url("assets/DryVan.png");
 }
 
-.section--services .truck-bg {
+.section--services {
   background-image: url("assets/Reefer.png");
 }
 
-.section--why .truck-bg {
+.section--why {
   background-image: url("assets/Flatbed.png");
 }
 
-.section--quote .truck-bg {
+.section--quote {
   background-image: url("assets/StepDeck.png");
 }
 
-.section--contact .truck-bg {
+.section--contact {
   background-image: url("assets/StraightTruck.png");
 }
 
-.section--carriers .truck-bg {
+.section--carriers {
   background-image: url("assets/POnly.png");
+}
+
+/* we no longer need the .truck-bg layer visually, but HTML still has it.
+   make it inert so it doesn’t mess anything up.
+*/
+.truck-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
 }
 
 /* ===== Modal ===== */
@@ -872,11 +881,7 @@ html {
 
   .page-section {
     padding-top: 96px;
-  }
-
-  .truck-bg {
-    inset: auto 0 0 0;
-    height: 56vh;
+    padding-bottom: 80px;
   }
 }
 
