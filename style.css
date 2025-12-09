@@ -404,6 +404,7 @@ body {
   box-shadow: var(--shadow);
 }
 
+
 .tile h3 {
   margin: 0 0 8px;
   font-size: 18px;
@@ -423,6 +424,41 @@ body {
 
 .bullets li {
   margin-bottom: 4px;
+}
+/* ===== Why DLV – 3-step process card under tiles ===== */
+.section--why .why-steps {
+  margin-top: 26px;
+  max-width: 520px;  /* keeps it on the left, away from the truck */
+  padding: 18px 20px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(5, 16, 34, 0.98);
+  border: 1px solid rgba(113, 255, 188, 0.3);
+  box-shadow: var(--shadow);
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.section--why .why-step {
+  padding: 6px 0 4px;
+}
+
+.section--why .why-step + .why-step {
+  border-top: 1px solid rgba(101, 140, 210, 0.35); /* divider between 01 / 02 / 03 */
+}
+
+.section--why .why-step-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.section--why .why-step p {
+  margin: 0;
 }
 
 /* Who – extra bottom content */
@@ -455,40 +491,6 @@ body {
 
 .who-extra-card li {
   margin-bottom: 4px;
-}
-/* ===== Why DLV – 3-step process block (under main tiles) ===== */
-.why-steps {
-  margin-top: 26px;
-  max-width: 640px;                        /* keeps it in the left side, not over the truck */
-  padding: 18px 20px 14px;
-  border-radius: var(--radius-md);
-  background: rgba(5, 16, 34, 0.96);
-  border: 1px solid rgba(101, 140, 210, 0.55);
-  box-shadow: var(--shadow);
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.why-step {
-  padding-top: 6px;
-  padding-bottom: 4px;
-}
-
-.why-step + .why-step {
-  border-top: 1px solid rgba(101, 140, 210, 0.35);   /* subtle separator between 01 / 02 / 03 */
-}
-
-.why-step-tag {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: 2px;
-}
-
-.why-step p {
-  margin: 0;
 }
 
 /* Service grid */
